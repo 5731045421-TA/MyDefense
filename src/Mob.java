@@ -8,6 +8,7 @@ public class Mob extends Rectangle{
 	public int direction = right;
 	public int mobID = Value.mobAir;
 	public boolean inGame = false;
+	public boolean isDead = false;
 	public boolean isUpward = false;
 	public boolean isDownward = false;
 	public boolean isRightward = false;
@@ -16,6 +17,7 @@ public class Mob extends Rectangle{
 	public Mob(){
 		
 	}
+	int i = 0;
 	public void spawnMob(int mobID){
 		for(int y = 0;y<Screen.room.block.length;y++){
 			if(Screen.room.block[y][0].groundID == Value.groundRoad){
@@ -24,11 +26,13 @@ public class Mob extends Rectangle{
 				yC = y;
 			}
 		}
-		
+		System.out.println(i++ + " "+inGame);
 		this.mobID = mobID;
 		inGame = true;
+		isDead = false;
 	}
-	public int walkFrame = 0,walkSpeed = 5;
+	
+	public int walkFrame = 0,walkSpeed = 2;
 	public void physic(){
 		if(walkFrame>=walkSpeed){
 			if(direction == right){
@@ -85,6 +89,12 @@ public class Mob extends Rectangle{
 						}
 					} catch (Exception e) {}
 				}
+				
+				if(Screen.room.block[yC][xC].airID == Value.airBase){
+					deleteMob();
+					looseHealth();
+				}
+				
 				isUpward = false;
 				isDownward = false;
 				isLeftward = false;
@@ -96,6 +106,15 @@ public class Mob extends Rectangle{
 		}else{
 			walkFrame++;
 		}
+	}
+	
+	public void deleteMob() {
+		inGame = false;
+		isDead = true;
+	}
+	
+	public void looseHealth(){
+		Screen.health--;
 	}
 	
 	public void draw(Graphics g){

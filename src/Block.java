@@ -13,9 +13,11 @@ public class Block extends Rectangle{
 		g2d.drawRect(x, y, width, height);
 		if(groundID == Value.groundGrass)g2d.drawImage(Screen.grass, null, x, y);
 		else if(groundID == Value.groundRoad)g2d.drawImage(Screen.road, null, x, y);
-		else if(groundID == Value.groundBase)g2d.drawImage(Screen.base, null, x, y);
-		if(airID != Value.airAir){
-			g2d.drawImage(Screen.road, null, x, y);
+		
+		if(airID == Value.airBase){
+			g2d.drawImage(Screen.base, null, x, y);
+		}else if(airID >= 0){
+			g2d.drawImage(Screen.turret[airID], null, x, y);
 		}
 	}
 }

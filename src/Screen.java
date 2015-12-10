@@ -13,12 +13,15 @@ public class Screen extends JPanel implements Runnable {
 	public static BufferedImage base;
 	public static BufferedImage heart = null;
 	public static BufferedImage coin = null;
+	public static BufferedImage block = null;
+	public static BufferedImage bin = null;
 	public static BufferedImage[] turret = new BufferedImage[7];
 	public static BufferedImage[][] animationCreep1=null;
 	public static BufferedImage[][] animationCreep2=null;
 	public static BufferedImage[][] animationCreep3=null;
 
 	public static boolean isFirst = true;
+	public static boolean isDead = false;
 
 	public static Point mse = new Point(0, 0);
 
@@ -27,10 +30,10 @@ public class Screen extends JPanel implements Runnable {
 	public static Store store;
 	
 	public static int myWidth, myHeight;
-	public static int coinage = 10,health = 100;
+	public static int coinage = 100,health = 500;
 	public int spawnTime = 100,spawnFrame = 2400;
 	
-	public static Mob[] mobs = new Mob[100];
+	public static Mob[] mobs = new Mob[30];
 
 	static {
 		try {
@@ -39,6 +42,8 @@ public class Screen extends JPanel implements Runnable {
 			base = ImageIO.read(new File("res/base.png"));
 			heart = ImageIO.read(new File("res/heart.png"));
 			coin = ImageIO.read(new File("res/coin.png"));
+			block = ImageIO.read(new File("res/block.png"));
+			bin = ImageIO.read(new File("res/bin.png"));
 			turret[0] = ImageIO.read(new File("res/tower/turret-1-1.png"));
 			turret[1] = ImageIO.read(new File("res/tower/turret-2-1.png"));
 			turret[2] = ImageIO.read(new File("res/tower/turret-3-1.png"));
@@ -114,18 +119,26 @@ public class Screen extends JPanel implements Runnable {
 		}
 		
 		store.draw(g);// Draw the store
+		
+		if(health < 1){
+			g2.setColor(new Color(240, 20, 20));
+//			g2.fillRect(0, 0, myWidth, myHeight);
+//			g2.setColor(Color.WHITE);
+			g2.setFont(new Font("Courier New", Font.BOLD, 40));
+			g2.drawString("GAME OVER!", myWidth/2-90, myHeight/2);
+			g2.drawString("Press Enter", myWidth/2-110, myHeight/2+45);
+		}
 	}
-	int is =0;
+
 	public void mobSpawner(){
 		if(spawnFrame >= spawnTime){
 			for(int i =0;i<mobs.length;i++){
-				if(!mobs[i].inGame){
+				if(!mobs[i].inGame&&!mobs[i].isDead){
 					mobs[i].spawnMob(0);
 					break;
 				}
 			}
 			spawnFrame = 0;
-			System.out.println("spaw"+is++);
 		}else{
 			spawnFrame++;
 		}
@@ -134,7 +147,7 @@ public class Screen extends JPanel implements Runnable {
 	@Override
 	public void run() {
 		while (true) {
-			if (!isFirst) {
+			if (!isFirst && health > 0) {
 				room.physic();
 				mobSpawner();
 				for(int i = 0;i<mobs.length;i++){
