@@ -1,0 +1,62 @@
+package game;
+
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
+public class Resource {
+	
+	public static BufferedImage grass= null;
+	public static BufferedImage road= null;
+	public static BufferedImage base= null;
+	public static BufferedImage heart = null;
+	public static BufferedImage coin = null;
+	public static BufferedImage block = null;
+	public static BufferedImage bin = null;
+	public static BufferedImage[] turret = new BufferedImage[7];
+	public static BufferedImage[][] animationCreep1=null;
+	public static BufferedImage[][] animationCreep2=null;
+	public static BufferedImage[][] animationCreep3=null;
+	
+	
+	static {
+		try {
+			ClassLoader load = Screen.class.getClassLoader();
+			grass = ImageIO.read(load.getResource("res/grass.png"));
+			road = ImageIO.read(load.getResource("res/road.png"));
+			base = ImageIO.read(load.getResource("res/base.png"));
+			heart = ImageIO.read(load.getResource("res/heart.png"));
+			coin = ImageIO.read(load.getResource("res/coin.png"));
+			block = ImageIO.read(load.getResource("res/block.png"));
+			bin = ImageIO.read(load.getResource("res/bin.png"));
+			turret[0] = ImageIO.read(load.getResource("res/tower/turret-1-1.png"));
+			turret[1] = ImageIO.read(load.getResource("res/tower/turret-2-1.png"));
+			turret[2] = ImageIO.read(load.getResource("res/tower/turret-3-1.png"));
+			turret[3] = ImageIO.read(load.getResource("res/tower/turret-4-1.png"));
+			turret[4] = ImageIO.read(load.getResource("res/tower/turret-5-1.png"));
+			turret[5] = ImageIO.read(load.getResource("res/tower/turret-6-1.png"));
+			turret[6] = ImageIO.read(load.getResource("res/tower/turret-7-1.png"));
+			
+			BufferedImage creep1=ImageIO.read(load.getResource("res/creep1.png"));
+			BufferedImage creep2=ImageIO.read(load.getResource("res/creep2.png"));
+			BufferedImage creep3=ImageIO.read(load.getResource("res/creep3.png"));
+			
+			animationCreep1 =new BufferedImage[4][4];
+			animationCreep2 =new BufferedImage[4][4];
+			animationCreep3 =new BufferedImage[4][4];
+			
+			for(int i=0;i<4;i++){
+				for (int j = 0; j < 4; j++) {
+					animationCreep1[i][j]=creep1.getSubimage(j*40, i*40, 40, 40);
+					animationCreep2[i][j]=creep2.getSubimage(j*40, i*40, 40, 40);
+					animationCreep3[i][j]=creep3.getSubimage(j*40, i*40, 40, 40);
+				}
+			}
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+}
