@@ -10,7 +10,9 @@ public class Mob extends Rectangle{
 	public int health;
 	public int healthSpace = 3,healthHeight = 6;
 	public int mobSize = 40;
+	public static int mobHealth = 0;
 	public int mobWalk = 0;
+	public int healthDivider = 1;
 	public int up = 0,down = 1,right = 2,left = 3;
 	public int direction = right;
 	public int mobID = Value.mobAir;
@@ -26,7 +28,7 @@ public class Mob extends Rectangle{
 		
 	}
 	int i = 0;
-	public void spawnMob(int mobID){
+	public void spawnMob(int mobID,int i){
 		for(int y = 0;y<Screen.room.block.length;y++){
 			if(Screen.room.block[y][0].groundID == Value.groundRoad){
 				setBounds(Screen.room.block[y][0].x, Screen.room.block[y][0].y, mobSize, mobSize);
@@ -34,7 +36,12 @@ public class Mob extends Rectangle{
 				yC = y;
 			}
 		}
-		this.health = mobSize;
+		this.health = mobHealth;
+		this.healthDivider = mobID+1;
+		if(i != 0&& i>9){
+			this.health+=40;
+			this.healthDivider+=1;
+		}
 		this.mobID = mobID;
 		this.inGame = true;
 		this.isDead = false;
@@ -119,6 +126,7 @@ public class Mob extends Rectangle{
 	//player health
 	private void loseHealth() {
 		Screen.health--;
+		Screen.countKill();
 		
 	}
 
@@ -154,13 +162,13 @@ public class Mob extends Rectangle{
 	public void draw(Graphics g){
 		Graphics2D g2d = (Graphics2D)g;
 		if(inGame){
-			g2d.drawImage(Resource.animationCreep3[2][counter++ % 4], null, x	,y);
+			g2d.drawImage(Resource.animationCreep3[mobID][counter++ % 4], null, x	,y);
 			//health bar.
 			g2d.setColor(Color.RED);
 			g2d.fillRect(x , y - (healthSpace + healthHeight), width, healthHeight);
 			
 			g2d.setColor(Color.GREEN);
-			g2d.fillRect(x , y - (healthSpace + healthHeight), health, healthHeight);
+			g2d.fillRect(x , y - (healthSpace + healthHeight), health/(healthDivider), healthHeight);
 			
 			g2d.setColor(Color.BLACK);
 			g2d.drawRect(x , y - (healthSpace + healthHeight), width, healthHeight - 1);

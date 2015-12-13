@@ -14,7 +14,9 @@ public class Resource {
 	public static BufferedImage coin = null;
 	public static BufferedImage block = null;
 	public static BufferedImage bin = null;
-	public static BufferedImage[] turret = new BufferedImage[7];
+	public static BufferedImage upgrade = null;
+	public static BufferedImage sell = null;
+	public static BufferedImage[] turret = new BufferedImage[14];
 	public static BufferedImage[][] animationCreep1=null;
 	public static BufferedImage[][] animationCreep2=null;
 	public static BufferedImage[][] animationCreep3=null;
@@ -30,6 +32,8 @@ public class Resource {
 			coin = ImageIO.read(load.getResource("res/coin.png"));
 			block = ImageIO.read(load.getResource("res/block.png"));
 			bin = ImageIO.read(load.getResource("res/bin.png"));
+			upgrade = ImageIO.read(load.getResource("res/upgrade.png"));
+			sell = ImageIO.read(load.getResource("res/sells.png"));
 			turret[0] = ImageIO.read(load.getResource("res/tower/turret-1-1.png"));
 			turret[1] = ImageIO.read(load.getResource("res/tower/turret-2-1.png"));
 			turret[2] = ImageIO.read(load.getResource("res/tower/turret-3-1.png"));
@@ -37,6 +41,14 @@ public class Resource {
 			turret[4] = ImageIO.read(load.getResource("res/tower/turret-5-1.png"));
 			turret[5] = ImageIO.read(load.getResource("res/tower/turret-6-1.png"));
 			turret[6] = ImageIO.read(load.getResource("res/tower/turret-7-1.png"));
+			
+			turret[7] = ImageIO.read(load.getResource("res/tower/turret-1-3.png"));
+			turret[8] = ImageIO.read(load.getResource("res/tower/turret-2-3.png"));
+			turret[9] = ImageIO.read(load.getResource("res/tower/turret-3-3.png"));
+			turret[10] = ImageIO.read(load.getResource("res/tower/turret-4-3.png"));
+			turret[11] = ImageIO.read(load.getResource("res/tower/turret-5-3.png"));
+			turret[12] = ImageIO.read(load.getResource("res/tower/turret-6-3.png"));
+			turret[13] = ImageIO.read(load.getResource("res/tower/turret-7-3.png"));
 			
 			BufferedImage creep1=ImageIO.read(load.getResource("res/creep1.png"));
 			BufferedImage creep2=ImageIO.read(load.getResource("res/creep2.png"));

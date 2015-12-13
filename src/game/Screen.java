@@ -26,8 +26,9 @@ public class Screen extends JPanel implements Runnable {
 	public static StartScreen startScreen;
 	
 	public static int myWidth, myHeight;
-	public static int coinage = 10000,health = 10;
+	public static int coinage = 200,health = 10;
 	public static int killed = 0,killToWin = 0,level = 1,maxLevel = 3;
+	public static int mobType = 0;
 	
 	public int spawnTime = 1200,spawnFrame = 2400;
 	
@@ -122,7 +123,7 @@ public class Screen extends JPanel implements Runnable {
 		if(spawnFrame >= spawnTime){
 			for(int i =0;i<mobs.length;i++){
 				if(!mobs[i].inGame&&!mobs[i].isDead){
-					mobs[i].spawnMob(0);
+					mobs[i].spawnMob(mobType,i);
 					break;
 				}
 			}
@@ -137,6 +138,7 @@ public class Screen extends JPanel implements Runnable {
 			isWin = true;
 			killed = 0;
 			coinage = 200;
+			health = 20;
 		}
 	}
 	

@@ -8,7 +8,7 @@ public class Block extends Rectangle {
 	 */
 	private static final long serialVersionUID = 1L;
 	public Rectangle towerSquare;
-	public int towerSquareSize = 100;
+	public int towerSquareSize = 80;
 	public int groundID;
 	public int airID;
 	public int loseTime = 100,loseFrame = 0;
@@ -108,7 +108,6 @@ public class Block extends Rectangle {
 				g2d.setComposite(transcluentWhite);
 				g2d.setColor(Color.LIGHT_GRAY);
 				g2d.fillOval(towerSquare.x, towerSquare.y, towerSquare.width, towerSquare.height);
-				
 				g2d.setComposite(opaque);
 			}
 		}
