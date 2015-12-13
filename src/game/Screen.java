@@ -147,11 +147,11 @@ public class Screen extends JPanel implements Runnable {
 		while (true) {
 			
 			if (!isFirst && health > 0 &&!isWin) {
-				room.physic();
+				room.logic();
 				mobSpawner();
 				for(int i = 0;i<mobs.length;i++){
 					if(mobs[i].inGame){
-						mobs[i].physic();
+						mobs[i].move();
 					}
 				}
 			}else{

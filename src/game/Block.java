@@ -49,7 +49,7 @@ public class Block extends Rectangle {
 		}
 	}
 
-	public void physics() {
+	public void attack() {
 		if (shotMob != -1 && towerSquare.intersects(Screen.mobs[shotMob])) {
 			shoting = true;
 			

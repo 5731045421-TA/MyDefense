@@ -55,7 +55,8 @@ public class Mob extends Rectangle{
 	}
 	
 	public int walkFrame = 0,walkSpeed = 10;
-	public void physic(){
+	
+	public void move(){
 		if(walkFrame>=walkSpeed){
 			if(direction == right){
 				x++;
