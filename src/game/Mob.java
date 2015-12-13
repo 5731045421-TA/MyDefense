@@ -22,7 +22,7 @@ public class Mob extends Rectangle{
 	public boolean isDownward = false;
 	public boolean isRightward = false;
 	public boolean isLeftward = false;
-
+	public int type = 1;
 	
 	public Mob(){
 		
@@ -41,6 +41,12 @@ public class Mob extends Rectangle{
 		if(i != 0&& i>9){
 			this.health+=40;
 			this.healthDivider+=1;
+			this.type = 2;
+		}
+		if(i > 19){
+			this.health+=40;
+			this.healthDivider+=1;
+			this.type = 3;
 		}
 		this.mobID = mobID;
 		this.inGame = true;
@@ -158,11 +164,26 @@ public class Mob extends Rectangle{
 		}
 	}
 	
-	int counter = 0;
+	int counter = 0,change = 50,ani = 0;
 	public void draw(Graphics g){
 		Graphics2D g2d = (Graphics2D)g;
 		if(inGame){
-			g2d.drawImage(Resource.animationCreep3[mobID][counter++ % 4], null, x	,y);
+			if(counter >= change){
+				ani++;
+				if(ani == 4)ani = 0;
+				
+				counter = 0;
+			}else {
+				counter++;
+			}
+			if(type == 1){
+				g2d.drawImage(Resource.animationCreep1[mobID][ani], null, x	,y);
+			}else if(type == 2){
+				g2d.drawImage(Resource.animationCreep2[mobID][ani], null, x	,y);
+			}else if(type == 3){
+				g2d.drawImage(Resource.animationCreep3[mobID][ani], null, x	,y);
+			}
+			
 			//health bar.
 			g2d.setColor(Color.RED);
 			g2d.fillRect(x , y - (healthSpace + healthHeight), width, healthHeight);
