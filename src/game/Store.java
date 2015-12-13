@@ -60,6 +60,7 @@ public class Store {
 							}
 						}
 					}
+					Resource.coinSound.play();
 				}
 			} else if (holdsItem && heldID == Value.airSell) {
 				for (int y = 0; y < Screen.room.block.length; y++) {

@@ -26,6 +26,7 @@ public class LoadMap {
 				}
 			}
 			loadScanner.close();
+			Resource.soundTrack.play();
 		} catch (Exception e) {
 			throw new LoadMissionException(e);
 		}

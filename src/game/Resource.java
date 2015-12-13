@@ -1,5 +1,7 @@
 package game;
 
+import java.applet.Applet;
+import java.applet.AudioClip;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -21,6 +23,10 @@ public class Resource {
 	public static BufferedImage[][] animationCreep2=null;
 	public static BufferedImage[][] animationCreep3=null;
 	
+	public static AudioClip soundTrack;
+	public static AudioClip deathSound;
+	public static AudioClip shootSound[]=new AudioClip[2];
+	public static AudioClip coinSound;
 	
 	static {
 		try {
@@ -67,6 +73,23 @@ public class Resource {
 			}
 			
 		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		try{
+			ClassLoader loader=Resource.class.getClassLoader();
+			soundTrack=Applet.newAudioClip(loader.getResource("soundRes/soundTrack.wav"));
+			coinSound=Applet.newAudioClip(loader.getResource("soundRes/coinSound.wav"));
+			deathSound=Applet.newAudioClip(loader.getResource("soundRes/deathSound.wav"));
+			for(int i=1;i<=shootSound.length;i++){
+				shootSound[i-1]=Applet.newAudioClip(loader.getResource("soundRes/shootSound"+i+".wav"));
+			}
+			
+			
+		}catch(Exception e){
+			soundTrack=null;
+			coinSound=null;
+			System.out.println("sound not found");
 			e.printStackTrace();
 		}
 	}
