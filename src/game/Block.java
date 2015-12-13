@@ -50,22 +50,22 @@ public class Block extends Rectangle {
 	}
 
 	public void attack() {
-		if (shotMob != -1 && towerSquare.intersects(Screen.mobs[shotMob])) {
+		if (shotMob != -1 && towerSquare.intersects(GameScreen.mobs[shotMob])) {
 			shoting = true;
 			
 		} else {
 			shoting = false;
 		}
-		if(shotMob != -1 && Screen.mobs[shotMob].isDead){
+		if(shotMob != -1 && GameScreen.mobs[shotMob].isDead){
 			shoting = false;
 		}
 		
 		if (!shoting) {
 			if (airID >= 0) {
-				for (int i = 0; i < Screen.mobs.length; i++) {
-					if (Screen.mobs[i].inGame) {
+				for (int i = 0; i < GameScreen.mobs.length; i++) {
+					if (GameScreen.mobs[i].inGame) {
 						
-						if (towerSquare.intersects(Screen.mobs[i])) {
+						if (towerSquare.intersects(GameScreen.mobs[i])) {
 							shoting = true;
 							shotMob = i;
 							
@@ -77,14 +77,14 @@ public class Block extends Rectangle {
 		//bug
 		if(shoting){
 			if(loseFrame>=loseTime){
-				Screen.mobs[shotMob].looseHealth(1);
-				if(Screen.mobs[shotMob].isDead()){
-					getMoney(Screen.mobs[shotMob].mobID);
+				GameScreen.mobs[shotMob].looseHealth(1);
+				if(GameScreen.mobs[shotMob].isDead()){
+					getMoney(GameScreen.mobs[shotMob].mobID);
 					shoting = false;
 					shotMob = -1;
-					Screen.countKill();
-					System.out.println(Screen.killed);
-					Screen.hasWon();
+					GameScreen.countKill();
+					System.out.println(GameScreen.killed);
+					GameScreen.hasWon();
 				}
 				loseFrame = 0;
 			}else{
@@ -96,13 +96,13 @@ public class Block extends Rectangle {
 	}
 	
 	public void getMoney(int mobID){
-			Screen.coinage += Value.deathReward[mobID] ;
+		GameScreen.coinage += Value.deathReward[mobID] ;
 			//System.out.println("get Money"+" "+Screen.mobs[shotMob].mobID);
 	}
 
 	public void fight(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
-		if (Screen.isDebug) {
+		if (GameScreen.isDebug) {
 			if (airID >= 0) {
 				//g2d.drawRect(towerSquare.x, towerSquare.y, towerSquare.width, towerSquare.height);
 				g2d.setComposite(transcluentWhite);
@@ -113,8 +113,8 @@ public class Block extends Rectangle {
 		}
 		if (shoting) {
 			g.setColor(Color.YELLOW);
-			g.drawLine(x + (width / 2), y + (height / 2), Screen.mobs[shotMob].x + (Screen.mobs[shotMob].width / 2),
-					Screen.mobs[shotMob].y + (Screen.mobs[shotMob].height / 2));
+			g.drawLine(x + (width / 2), y + (height / 2), GameScreen.mobs[shotMob].x + (GameScreen.mobs[shotMob].width / 2),
+					GameScreen.mobs[shotMob].y + (GameScreen.mobs[shotMob].height / 2));
 		}
 
 	}

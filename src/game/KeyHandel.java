@@ -9,9 +9,9 @@ import java.awt.event.MouseMotionListener;
 
 
 public class KeyHandel implements MouseMotionListener, MouseListener,KeyListener {
-	private Screen screen;
+	private GameScreen screen;
 
-	public KeyHandel(Screen screen) {
+	public KeyHandel(GameScreen screen) {
 		this.screen = screen;
 	}
 
@@ -32,7 +32,7 @@ public class KeyHandel implements MouseMotionListener, MouseListener,KeyListener
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		Screen.store.click(e.getButton());
+		GameScreen.store.click(e.getButton());
 	}
 
 	@Override
@@ -42,8 +42,8 @@ public class KeyHandel implements MouseMotionListener, MouseListener,KeyListener
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		Screen.mse = new Point((e.getX()) + ((Frame.size.width - Screen.myWidth) / 2),
-				(e.getY()) + ((Frame.size.height - Screen.myHeight) / 2));
+		GameScreen.mse = new Point((e.getX()) + ((Frame.size.width - GameScreen.myWidth) / 2),
+				(e.getY()) + ((Frame.size.height - GameScreen.myHeight) / 2));
 	}
 
 	@Override
@@ -51,16 +51,16 @@ public class KeyHandel implements MouseMotionListener, MouseListener,KeyListener
 //		Screen.mse = new Point((e.getX()) - ((Frame.size.width - Screen.myWidth) / 2),
 //				(e.getY()) - ((Frame.size.height - Screen.myHeight) / 2));
 	
-		Screen.mse = new Point(e.getX(), e.getY()-32);
+		GameScreen.mse = new Point(e.getX(), e.getY()-32);
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode() == 32){
-			Screen.startEnter = true;
+			GameScreen.startEnter = true;
 		}
 		if(e.getKeyCode() == 10){
-			Screen.pressEnter = true;
+			GameScreen.pressEnter = true;
 			screen.nextMission();
 		}
 		
@@ -69,7 +69,7 @@ public class KeyHandel implements MouseMotionListener, MouseListener,KeyListener
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-		Screen.pressEnter = false;
+		GameScreen.pressEnter = false;
 	}
 
 	@Override

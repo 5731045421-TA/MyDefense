@@ -30,7 +30,7 @@ public class Resource {
 	
 	static {
 		try {
-			ClassLoader load = Screen.class.getClassLoader();
+			ClassLoader load = Resource.class.getClassLoader();
 			grass = ImageIO.read(load.getResource("res/grass.png"));
 			road = ImageIO.read(load.getResource("res/road.png"));
 			base = ImageIO.read(load.getResource("res/base.png"));

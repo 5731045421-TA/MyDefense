@@ -4,7 +4,7 @@ import javax.swing.*;
 
 import exception.LoadMissionException;
 
-public class Screen extends JPanel implements Runnable {
+public class GameScreen extends JPanel implements Runnable {
 	/**
 	 * 
 	 */
@@ -34,7 +34,8 @@ public class Screen extends JPanel implements Runnable {
 	
 	public static Mob[] mobs = new Mob[30];
 
-	public Screen(Frame frame) {
+	
+	public GameScreen(Frame frame) {
 		frame.addMouseMotionListener(new KeyHandel(this));
 		frame.addMouseListener(new KeyHandel(this));
 		frame.addKeyListener(new KeyHandel(this));

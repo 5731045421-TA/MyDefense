@@ -20,8 +20,8 @@ public class Frame extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLayout(new GridLayout(1, 1, 0, 0));
 		
-		Screen screen = new Screen(this);
-		add(screen);
+		GameScreen GameScreen = new GameScreen(this);
+		add(GameScreen);
 		
 		setVisible(true);
 	}

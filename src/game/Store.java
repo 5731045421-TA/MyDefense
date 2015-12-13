@@ -35,7 +35,7 @@ public class Store {
 	public void click(int mouseButton) {
 		if (mouseButton == 1) { // left mouse button
 			for (int i = 0; i < button.length; i++) {
-				if (button[i].contains(Screen.mse)) {
+				if (button[i].contains(GameScreen.mse)) {
 					heldID = buttonID[i];
 					holdsItem = true;
 					if (heldID == Value.airTrashCan) {// Delete item
@@ -48,14 +48,14 @@ public class Store {
 			}
 
 			if (holdsItem && heldID > -4) {
-				if (Screen.coinage >= buttonPrice[heldID]) {
-					for (int y = 0; y < Screen.room.block.length; y++) {
-						for (int x = 0; x < Screen.room.block[0].length; x++) {
-							if (Screen.room.block[y][x].contains(Screen.mse)) {
-								if (Screen.room.block[y][x].groundID != Value.groundRoad
-										&& Screen.room.block[y][x].airID == Value.airAir) {
-									Screen.room.block[y][x].airID = heldID;
-									Screen.coinage -= buttonPrice[heldID];
+				if (GameScreen.coinage >= buttonPrice[heldID]) {
+					for (int y = 0; y < GameScreen.room.block.length; y++) {
+						for (int x = 0; x < GameScreen.room.block[0].length; x++) {
+							if (GameScreen.room.block[y][x].contains(GameScreen.mse)) {
+								if (GameScreen.room.block[y][x].groundID != Value.groundRoad
+										&& GameScreen.room.block[y][x].airID == Value.airAir) {
+									GameScreen.room.block[y][x].airID = heldID;
+									GameScreen.coinage -= buttonPrice[heldID];
 								}
 							}
 						}
@@ -63,26 +63,26 @@ public class Store {
 					Resource.coinSound.play();
 				}
 			} else if (holdsItem && heldID == Value.airSell) {
-				for (int y = 0; y < Screen.room.block.length; y++) {
-					for (int x = 0; x < Screen.room.block[0].length; x++) {
-						if (Screen.room.block[y][x].contains(Screen.mse)) {
-							if (Screen.room.block[y][x].airID >= 0) {
+				for (int y = 0; y < GameScreen.room.block.length; y++) {
+					for (int x = 0; x < GameScreen.room.block[0].length; x++) {
+						if (GameScreen.room.block[y][x].contains(GameScreen.mse)) {
+							if (GameScreen.room.block[y][x].airID >= 0) {
 
-								Screen.coinage += buttonPrice[Screen.room.block[y][x].airID % 7] / 2;
-								Screen.room.block[y][x].airID = -1;
-								Screen.room.block[y][x].shoting = false;
+								GameScreen.coinage += buttonPrice[GameScreen.room.block[y][x].airID % 7] / 2;
+								GameScreen.room.block[y][x].airID = -1;
+								GameScreen.room.block[y][x].shoting = false;
 							}
 						}
 					}
 				}
 			} else if (holdsItem && heldID == Value.airUpGrade) {
-				for (int y = 0; y < Screen.room.block.length; y++) {
-					for (int x = 0; x < Screen.room.block[0].length; x++) {
-						if (Screen.room.block[y][x].contains(Screen.mse)) {
-							if (Screen.room.block[y][x].airID >= 0 && Screen.room.block[y][x].airID < 7
-									&& Screen.coinage >= upgradePrice[Screen.room.block[y][x].airID]) {
-								Screen.coinage -= upgradePrice[Screen.room.block[y][x].airID];
-								Screen.room.block[y][x].airID += 7;
+				for (int y = 0; y < GameScreen.room.block.length; y++) {
+					for (int x = 0; x < GameScreen.room.block[0].length; x++) {
+						if (GameScreen.room.block[y][x].contains(GameScreen.mse)) {
+							if (GameScreen.room.block[y][x].airID >= 0 && GameScreen.room.block[y][x].airID < 7
+									&& GameScreen.coinage >= upgradePrice[GameScreen.room.block[y][x].airID]) {
+								GameScreen.coinage -= upgradePrice[GameScreen.room.block[y][x].airID];
+								GameScreen.room.block[y][x].airID += 7;
 
 							}
 						}
@@ -95,13 +95,13 @@ public class Store {
 	private void define() {
 		for (int i = 0; i < button.length; i++) {
 			button[i] = new Rectangle(
-					(Screen.myWidth / 2) - ((shopWidth * buttonSize) / 2) + ((buttonSize + cellSpace) * i),
-					(Screen.room.block[Screen.room.worldHeight - 1][0].y) + Screen.room.blockSize + (cellSpace * 15),
+					(GameScreen.myWidth / 2) - ((shopWidth * buttonSize) / 2) + ((buttonSize + cellSpace) * i),
+					(GameScreen.room.block[GameScreen.room.worldHeight - 1][0].y) + GameScreen.room.blockSize + (cellSpace * 15),
 					buttonSize, buttonSize);
 
 		}
-		buttonHealth = new Rectangle(Screen.room.block[0][0].x - 1, button[0].y, iconSize, iconSize);
-		buttonCoin = new Rectangle(Screen.room.block[0][0].x - 1, button[0].y + button[0].height - iconSize + cellSpace,
+		buttonHealth = new Rectangle(GameScreen.room.block[0][0].x - 1, button[0].y, iconSize, iconSize);
+		buttonCoin = new Rectangle(GameScreen.room.block[0][0].x - 1, button[0].y + button[0].height - iconSize + cellSpace,
 				iconSize, iconSize);
 	}
 
@@ -109,7 +109,7 @@ public class Store {
 		Graphics2D g2d = (Graphics2D) g;
 
 		for (int i = 0; i < button.length; i++) {
-			if (button[i].contains(Screen.mse) && i != 7) {
+			if (button[i].contains(GameScreen.mse) && i != 7) {
 				g2d.setColor(new Color(255, 200, 120));
 				g2d.fillRect(button[i].x, button[i].y, button[i].width, button[i].height);
 			} else {
@@ -141,31 +141,31 @@ public class Store {
 		g2d.setFont(new Font("Courier New", Font.BOLD, 15));
 		g2d.setColor(Color.WHITE);
 		//draw Stage number
-		if(Screen.level == Screen.maxLevel){
+		if(GameScreen.level == GameScreen.maxLevel){
 			g2d.drawString("Final Stage", buttonHealth.x-25 + buttonHealth.width + cellSpace, buttonHealth.y + iconTextY-25);
 		}else{
-			g2d.drawString("Stage "+Screen.level, buttonHealth.x-25 + buttonHealth.width + cellSpace, buttonHealth.y + iconTextY-25);
+			g2d.drawString("Stage "+GameScreen.level, buttonHealth.x-25 + buttonHealth.width + cellSpace, buttonHealth.y + iconTextY-25);
 		}
 		//draw health and coin
 		g2d.setFont(new Font("Courier New", Font.BOLD, 14));
-		g2d.drawString("" + Screen.health, buttonHealth.x + buttonHealth.width + cellSpace, buttonHealth.y + iconTextY);
-		g2d.drawString("" + Screen.coinage, buttonCoin.x + buttonCoin.width + cellSpace, buttonCoin.y + iconTextY);
+		g2d.drawString("" + GameScreen.health, buttonHealth.x + buttonHealth.width + cellSpace, buttonHealth.y + iconTextY);
+		g2d.drawString("" + GameScreen.coinage, buttonCoin.x + buttonCoin.width + cellSpace, buttonCoin.y + iconTextY);
 
 		if (holdsItem) {
 			// draw sample turret
 			if (heldID >= 0) {
 				g2d.setComposite(transcluentWhite);
 				g2d.setColor(Color.WHITE);
-				g2d.fillOval(Screen.mse.x - radius[heldID], Screen.mse.y - radius[heldID], radius[heldID] * 2,
+				g2d.fillOval(GameScreen.mse.x - radius[heldID], GameScreen.mse.y - radius[heldID], radius[heldID] * 2,
 						radius[heldID] * 2);
 				g2d.setComposite(opaque);
 
-				g2d.drawImage(Resource.turret[heldID], null, Screen.mse.x - 20, Screen.mse.y - 20);
+				g2d.drawImage(Resource.turret[heldID], null, GameScreen.mse.x - 20, GameScreen.mse.y - 20);
 
 			} else if (heldID == Value.airSell) {
-				g2d.drawImage(Resource.sell, null, Screen.mse.x - 20, Screen.mse.y - 20);
+				g2d.drawImage(Resource.sell, null, GameScreen.mse.x - 20, GameScreen.mse.y - 20);
 			} else if (heldID == Value.airUpGrade) {
-				g2d.drawImage(Resource.upgrade, null, Screen.mse.x - 20, Screen.mse.y - 20);
+				g2d.drawImage(Resource.upgrade, null, GameScreen.mse.x - 20, GameScreen.mse.y - 20);
 			}
 
 		}
