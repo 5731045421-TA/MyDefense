@@ -24,15 +24,22 @@ public class Room {
 	}
 
 	public void draw(Graphics g) {
+		//draw Grass and road
 		for (int y = 0; y < block.length; y++) {
 			for (int x = 0; x < block[0].length; x++) {
-				block[y][x].draw(g);
+					block[y][x].drawGround(g);
 			}
 		}
-		
+		//draw area and lazer
 		for (int y = 0; y < block.length; y++) {
 			for (int x = 0; x < block[0].length; x++) {
 				block[y][x].fight(g);
+			}
+		}
+		//draw tower and base
+		for (int y = 0; y < block.length; y++) {
+			for (int x = 0; x < block[0].length; x++) {
+					block[y][x].drawAir(g);
 			}
 		}
 	}

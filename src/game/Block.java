@@ -1,6 +1,7 @@
 package game;
 import java.awt.*;
 
+
 public class Block extends Rectangle {
 	/**
 	 * 
@@ -14,6 +15,9 @@ public class Block extends Rectangle {
 
 	public int shotMob = -1;
 	public boolean shoting = false;
+	
+	public final AlphaComposite transcluentWhite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.4f);
+	public final AlphaComposite opaque = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1);
 
 	public Block(int x, int y, int width, int height, int groundId, int airID) {
 		setBounds(x, y, width, height);
@@ -23,13 +27,18 @@ public class Block extends Rectangle {
 		this.airID = airID;
 	}
 
-	public void draw(Graphics g) {
+	public void drawGround(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
-		g2d.drawRect(x, y, width, height);
+		//g2d.drawRect(x, y, width, height);
 		if (groundID == Value.groundGrass)
 			g2d.drawImage(Resource.grass, null, x, y);
 		else if (groundID == Value.groundRoad)
 			g2d.drawImage(Resource.road, null, x, y);
+	}
+	
+	public void drawAir(Graphics g) {
+		Graphics2D g2d = (Graphics2D) g;
+		//g2d.drawRect(x, y, width, height);
 
 		if (airID == Value.airBase) {
 			g2d.drawImage(Resource.base, null, x, y);
@@ -95,7 +104,12 @@ public class Block extends Rectangle {
 		Graphics2D g2d = (Graphics2D) g;
 		if (Screen.isDebug) {
 			if (airID >= 0) {
-				g2d.drawRect(towerSquare.x, towerSquare.y, towerSquare.width, towerSquare.height);
+				//g2d.drawRect(towerSquare.x, towerSquare.y, towerSquare.width, towerSquare.height);
+				g2d.setComposite(transcluentWhite);
+				g2d.setColor(Color.LIGHT_GRAY);
+				g2d.fillOval(towerSquare.x, towerSquare.y, towerSquare.width, towerSquare.height);
+				
+				g2d.setComposite(opaque);
 			}
 		}
 		if (shoting) {

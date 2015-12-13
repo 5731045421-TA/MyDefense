@@ -7,14 +7,14 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 public class Store {
-	public static int shopWidth = 8;
+	public static int shopWidth = 10;
 	public static int buttonSize = 40;
 	public static int cellSpace = 2;
 	public static int iconSize = 20;
 	public static int iconTextY = 15;
 	public static int heldID = -1;
-	public static int[] buttonID = { 0, 1, 2, 3, 4, 5, 6, -2 };
-	public static int[] buttonPrice = { 20, 30, 30, 50, 50, 100, 200, 0 };
+	public static int[] buttonID = { 0, 1, 2, 3, 4, 5, 6, -2 ,-2,-2};
+	public static int[] buttonPrice = { 20, 30, 30, 50, 50, 100, 200, 0 ,0,0};
 	public static int[] radius = {40,40,50,80,100,100,200};
 
 	public Rectangle[] button = new Rectangle[shopWidth];
@@ -95,7 +95,7 @@ public class Store {
 				g2d.drawString("$" + buttonPrice[i], button[i].x + 5, button[i].y - 4); // draw
 																						// price
 
-			if (i < button.length - 1)
+			if (i < button.length - 3)
 				g2d.drawImage(Resource.turret[i], null, button[i].x, button[i].y); // draw
 																					// turret
 		}

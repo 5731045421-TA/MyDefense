@@ -56,10 +56,10 @@ public class KeyHandel implements MouseMotionListener, MouseListener,KeyListener
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if(e.getKeyCode() == KeyEvent.VK_SPACE){
+		if(e.getKeyCode() == e.VK_SPACE){
 			Screen.startEnter = true;
 		}
-		if(e.getKeyCode() == KeyEvent.VK_ENTER){
+		if(e.getKeyCode() == e.VK_ENTER){
 			Screen.pressEnter = true;
 			screen.nextMission();
 		}

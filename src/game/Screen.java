@@ -14,7 +14,7 @@ public class Screen extends JPanel implements Runnable {
 	
 	public static boolean isFirst = true;
 	public static boolean startEnter = false;
-	public static boolean isDebug = false;
+	public static boolean isDebug = true;
 	public static boolean isWin = false;
 	public static boolean pressEnter = false;
 
