@@ -45,7 +45,6 @@ public class StartScreen extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				System.out.println("SADcasDFASF");
 				frame.remove(Main.start);
 				GameScreen GameScreen = new GameScreen(frame);
 				frame.add(GameScreen);
@@ -74,7 +73,7 @@ public class StartScreen extends JPanel {
 	
 	
 	public void playStartSong(){
-		Resource.coinSound.play();
+		//Resource.coinSound.play();
 	}
 	
 	

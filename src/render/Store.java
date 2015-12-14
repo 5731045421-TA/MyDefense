@@ -53,12 +53,12 @@ public class Store {
 
 			if (holdsItem && heldID > -4) {
 				if (GameScreen.coinage >= buttonPrice[heldID]) {
-					for (int y = 0; y < GameScreen.room.block.length; y++) {
-						for (int x = 0; x < GameScreen.room.block[0].length; x++) {
-							if (GameScreen.room.block[y][x].contains(GameScreen.mse)) {
-								if (GameScreen.room.block[y][x].groundID != Value.groundRoad
-										&& GameScreen.room.block[y][x].airID == Value.airAir) {
-									GameScreen.room.block[y][x].airID = heldID;
+					for (int y = 0; y < GameScreen.map.block.length; y++) {
+						for (int x = 0; x < GameScreen.map.block[0].length; x++) {
+							if (GameScreen.map.block[y][x].contains(GameScreen.mse)) {
+								if (GameScreen.map.block[y][x].groundID != Value.groundRoad
+										&& GameScreen.map.block[y][x].airID == Value.airAir) {
+									GameScreen.map.block[y][x].airID = heldID;
 									GameScreen.coinage -= buttonPrice[heldID];
 								}
 							}
@@ -68,14 +68,14 @@ public class Store {
 				}
 			} try { 
 				if (holdsItem && heldID == Value.airSell) {
-					for (int y = 0; y < GameScreen.room.block.length; y++) {
-						for (int x = 0; x < GameScreen.room.block[0].length; x++) {
-							if (GameScreen.room.block[y][x].contains(GameScreen.mse)) {
-								if (GameScreen.room.block[y][x].airID >= 0) {
+					for (int y = 0; y < GameScreen.map.block.length; y++) {
+						for (int x = 0; x < GameScreen.map.block[0].length; x++) {
+							if (GameScreen.map.block[y][x].contains(GameScreen.mse)) {
+								if (GameScreen.map.block[y][x].airID >= 0) {
 		
-									GameScreen.coinage += buttonPrice[GameScreen.room.block[y][x].airID % 7] / 2;
-									GameScreen.room.block[y][x].airID = -1;
-									GameScreen.room.block[y][x].shoting = false;
+									GameScreen.coinage += buttonPrice[GameScreen.map.block[y][x].airID % 7] / 2;
+									GameScreen.map.block[y][x].airID = -1;
+									GameScreen.map.block[y][x].shoting = false;
 								}
 							}
 						}
@@ -87,13 +87,13 @@ public class Store {
 			}
 				
 			} if (holdsItem && heldID == Value.airUpGrade) {
-				for (int y = 0; y < GameScreen.room.block.length; y++) {
-					for (int x = 0; x < GameScreen.room.block[0].length; x++) {
-						if (GameScreen.room.block[y][x].contains(GameScreen.mse)) {
-							if (GameScreen.room.block[y][x].airID >= 0 && GameScreen.room.block[y][x].airID < 7
-									&& GameScreen.coinage >= upgradePrice[GameScreen.room.block[y][x].airID]) {
-								GameScreen.coinage -= upgradePrice[GameScreen.room.block[y][x].airID];
-								GameScreen.room.block[y][x].airID += 7;
+				for (int y = 0; y < GameScreen.map.block.length; y++) {
+					for (int x = 0; x < GameScreen.map.block[0].length; x++) {
+						if (GameScreen.map.block[y][x].contains(GameScreen.mse)) {
+							if (GameScreen.map.block[y][x].airID >= 0 && GameScreen.map.block[y][x].airID < 7
+									&& GameScreen.coinage >= upgradePrice[GameScreen.map.block[y][x].airID]) {
+								GameScreen.coinage -= upgradePrice[GameScreen.map.block[y][x].airID];
+								GameScreen.map.block[y][x].airID += 7;
 
 							}
 						}
@@ -107,12 +107,12 @@ public class Store {
 		for (int i = 0; i < button.length; i++) {
 			button[i] = new Rectangle(
 					(GameScreen.myWidth / 2) - ((shopWidth * buttonSize) / 2) + ((buttonSize + cellSpace) * i),
-					(GameScreen.room.block[GameScreen.room.worldHeight - 1][0].y) + GameScreen.room.blockSize + (cellSpace * 15),
+					(GameScreen.map.block[GameScreen.map.worldHeight - 1][0].y) + GameScreen.map.blockSize + (cellSpace * 15),
 					buttonSize, buttonSize);
 
 		}
-		buttonHealth = new Rectangle(GameScreen.room.block[0][0].x - 1, button[0].y, iconSize, iconSize);
-		buttonCoin = new Rectangle(GameScreen.room.block[0][0].x - 1, button[0].y + button[0].height - iconSize + cellSpace,
+		buttonHealth = new Rectangle(GameScreen.map.block[0][0].x - 1, button[0].y, iconSize, iconSize);
+		buttonCoin = new Rectangle(GameScreen.map.block[0][0].x - 1, button[0].y + button[0].height - iconSize + cellSpace,
 				iconSize, iconSize);
 	}
 
