@@ -7,6 +7,7 @@ import game.KeyHandel;
 import game.LoadMap;
 import game.Map;
 import game.Mob;
+import game.Player;
 import game.Resource;
 
 
@@ -22,7 +23,7 @@ public class GameScreen extends JComponent implements Runnable {
 	public static boolean isWin = false;
 	public static boolean pressEnter = false;
 	public static boolean isPause = false;
-	public boolean allClear = false;
+
 
 	public static Point mse = new Point(0, 0);
 
@@ -32,8 +33,6 @@ public class GameScreen extends JComponent implements Runnable {
 	public static StartScreen startScreen;
 	
 	public static int myWidth, myHeight;
-	public static int coinage = 2000,health = 10;
-	public static int killed = 0,killToWin = 0,level = 1,maxLevel = 3;
 	public static int mobType = 0;
 	
 	public int spawnTime = 1200,spawnFrame = 0;
@@ -58,9 +57,9 @@ public class GameScreen extends JComponent implements Runnable {
 		loadmap = new LoadMap();
 		store = new Store();
 		try {
-			loadmap.loadSave("save/mission"+level);
+			loadmap.loadSave("save/mission"+Player.level);
 		} catch (LoadMissionException e) {
-			//all mission clear
+			
 		}
 		
 		for(int i =0;i<mobs.length;i++){
@@ -96,11 +95,18 @@ public class GameScreen extends JComponent implements Runnable {
 		
 		store.draw(g);// Draw the store
 		
-		if(!isWin && health < 1){
+		if(!isWin && Player.health < 1){
+			isPause = true;
 			g2.setColor(new Color(240, 20, 20));
 			g2.setFont(new Font("Courier New", Font.BOLD, 40));
 			g2.drawString("GAME OVER!", myWidth/2-90, myHeight/2);
-			g2.drawString("Press Enter", myWidth/2-110, myHeight/2+45);
+			g2.drawString("Press Enter to retry", myWidth/2-200, myHeight/2+45);
+			if(pressEnter){
+				Player.killed = 0;
+				Player.coinage = 200;
+				Player.health = 10;
+				define();
+			}
 		}
 		
 		if(isWin){
@@ -108,13 +114,11 @@ public class GameScreen extends JComponent implements Runnable {
 			g2.clearRect(0, 0, getWidth(), getHeight());
 			g2.setFont(new Font("Courier New", Font.BOLD, 35));
 			System.out.println("win");
-			if(level < maxLevel){
+			if(Player.level < Player.maxLevel){
 				
 				g2.drawString("Congratulations!", myWidth/2-160, myHeight/2);
 				g2.setFont(new Font("Courier New", Font.ITALIC, 20));
 				g2.drawString("Press Enter to Continune.....", myWidth/2-170, myHeight/2+45);
-			}else if(allClear){
-				drawAllClear(g);
 			}else {
 				drawAllClear(g);
 			}
@@ -132,9 +136,6 @@ public class GameScreen extends JComponent implements Runnable {
 	
 	}
 	
-	public static void countKill(){
-		killed++;
-	}
 	
 	//bug
 	public void mobSpawner(){
@@ -152,11 +153,11 @@ public class GameScreen extends JComponent implements Runnable {
 	}
 	
 	public  static void hasWon(){
-		if(killed == killToWin){
+		if(Player.killed == Player.killToWin){
 			isWin = true;
-			killed = 0;
-			coinage = 200;
-			health = 20;
+			Player.killed = 0;
+			Player.coinage = 200;
+			Player.health = 10;
 		}
 	}
 	
@@ -164,7 +165,7 @@ public class GameScreen extends JComponent implements Runnable {
 	public void run() {
 		while (true) {
 			
-			if (!isFirst && health > 0 &&!isWin) {
+			if (!isFirst && Player.health > 0 &&!isWin) {
 				map.logic();
 				mobSpawner();
 				for(int i = 0;i<mobs.length;i++){
@@ -191,10 +192,10 @@ public class GameScreen extends JComponent implements Runnable {
 					try {
 						synchronized (thread) {
 							thread.wait();
-							if(level == maxLevel){
+							if(Player.level == Player.maxLevel){
 								System.exit(0);
 							}else{
-								level++;
+								Player.level++;
 								define();
 								isWin = false;
 							}

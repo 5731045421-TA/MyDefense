@@ -14,6 +14,7 @@ public class Resource {
 	public static BufferedImage base= null;
 	public static BufferedImage heart = null;
 	public static BufferedImage coin = null;
+	public static BufferedImage miniMob = null;
 	public static BufferedImage block = null;
 	public static BufferedImage bin = null;
 	public static BufferedImage upgrade = null;
@@ -22,6 +23,7 @@ public class Resource {
 	public static BufferedImage[][] animationCreep1=null;
 	public static BufferedImage[][] animationCreep2=null;
 	public static BufferedImage[][] animationCreep3=null;
+	public static BufferedImage boss = null;
 	
 	public static AudioClip soundTrack;
 	public static AudioClip deathSound;
@@ -38,6 +40,7 @@ public class Resource {
 			base = ImageIO.read(load.getResource("res/base.png"));
 			heart = ImageIO.read(load.getResource("res/heart.png"));
 			coin = ImageIO.read(load.getResource("res/coin.png"));
+			miniMob = ImageIO.read(load.getResource("res/miniMob.png"));
 			block = ImageIO.read(load.getResource("res/block.png"));
 			bin = ImageIO.read(load.getResource("res/bin.png"));
 			upgrade = ImageIO.read(load.getResource("res/upgrade.png"));
@@ -64,6 +67,7 @@ public class Resource {
 			animationCreep1 =new BufferedImage[4][4];
 			animationCreep2 =new BufferedImage[4][4];
 			animationCreep3 =new BufferedImage[4][4];
+			boss = ImageIO.read(load.getResource("res/boss.png"));
 			
 			for(int i=0;i<4;i++){
 				for (int j = 0; j < 4; j++) {
