@@ -28,7 +28,10 @@ public class LoadMap {
 				}
 			}
 			loadScanner.close();
+			Resource.startScreenSound.stop();
+			Resource.congratSound.stop();
 			Resource.soundTrack.play();//soundTrack
+			GameScreen.gameoverSoundTrigger=true;//gameoverSound will play only once
 		} catch (Exception e) {
 			throw new LoadMissionException(e);
 		}

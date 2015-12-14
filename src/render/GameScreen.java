@@ -1,4 +1,5 @@
 package render;
+import java.applet.AudioClip;
 import java.awt.*;
 import javax.swing.*;
 
@@ -66,7 +67,8 @@ public class GameScreen extends JComponent implements Runnable {
 			mobs[i] = new Mob();
 		}
 	}
-
+	
+	public static boolean gameoverSoundTrigger;
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -94,16 +96,24 @@ public class GameScreen extends JComponent implements Runnable {
 		}
 		
 		store.draw(g);// Draw the store
-		
 		if(!isWin && health < 1){
 			g2.setColor(new Color(240, 20, 20));
 			g2.setFont(new Font("Courier New", Font.BOLD, 40));
 			g2.drawString("GAME OVER!", myWidth/2-90, myHeight/2);
 			g2.drawString("Press Enter", myWidth/2-110, myHeight/2+45);
+			Resource.soundTrack.stop();
+			if (gameoverSoundTrigger) {
+				Resource.gameoverSound.play();
+				System.out.println("paly gameover song");
+				gameoverSoundTrigger=false;
+			}
+			
+			
 		}
 		
 		if(isWin){
 			Resource.shootSound[0].stop();
+			Resource.soundTrack.stop();
 			g2.clearRect(0, 0, getWidth(), getHeight());
 			g2.setFont(new Font("Courier New", Font.BOLD, 35));
 			System.out.println("win");
@@ -117,6 +127,8 @@ public class GameScreen extends JComponent implements Runnable {
 			}else {
 				drawAllClear(g);
 			}
+			Resource.congratSound.play();
+			System.out.println("play congratSound");
 		}
 	
 		
@@ -180,7 +192,6 @@ public class GameScreen extends JComponent implements Runnable {
 					}
 					
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -200,7 +211,6 @@ public class GameScreen extends JComponent implements Runnable {
 						}
 						
 					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 					
@@ -212,7 +222,6 @@ public class GameScreen extends JComponent implements Runnable {
 			try {
 				Thread.sleep(2);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

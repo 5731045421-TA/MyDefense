@@ -74,7 +74,7 @@ public class StartScreen extends JPanel {
 	
 	
 	public void playStartSong(){
-		Resource.coinSound.play();
+		Resource.startScreenSound.loop();
 	}
 	
 	
