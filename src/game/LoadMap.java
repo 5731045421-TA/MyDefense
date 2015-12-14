@@ -8,6 +8,7 @@ public class LoadMap {
 	private Scanner loadScanner;
 
 	public void loadSave(String loadPath)throws LoadMissionException{
+		
 		try {
 			ClassLoader loader = LoadMap.class.getClassLoader();
 			loadScanner = new Scanner(loader.getResourceAsStream(loadPath));
@@ -31,5 +32,6 @@ public class LoadMap {
 		} catch (Exception e) {
 			throw new LoadMissionException(e);
 		}
+		
 	}
 }

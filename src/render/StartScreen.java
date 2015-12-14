@@ -45,7 +45,7 @@ public class StartScreen extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				System.out.println("SADcasDFASF");
+				//System.out.println("SADcasDFASF");
 				frame.remove(Main.start);
 				GameScreen GameScreen = new GameScreen(frame);
 				frame.add(GameScreen);
