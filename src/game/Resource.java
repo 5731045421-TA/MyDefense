@@ -27,7 +27,9 @@ public class Resource {
 	public static AudioClip deathSound;
 	public static AudioClip shootSound[]=new AudioClip[2];
 	public static AudioClip coinSound;
-	
+	public static AudioClip congratSound;
+	public static AudioClip gameoverSound;
+	public static AudioClip startScreenSound;
 	static {
 		try {
 			ClassLoader load = Resource.class.getClassLoader();
@@ -81,6 +83,9 @@ public class Resource {
 			soundTrack=Applet.newAudioClip(loader.getResource("soundRes/soundTrack.wav"));
 			coinSound=Applet.newAudioClip(loader.getResource("soundRes/coinSound.wav"));
 			deathSound=Applet.newAudioClip(loader.getResource("soundRes/deathSound.wav"));
+			congratSound=Applet.newAudioClip(loader.getResource("soundRes/congratSound.mp3"));
+			gameoverSound=Applet.newAudioClip(loader.getResource("soundRes/gameoverSound.mp3"));
+			startScreenSound=Applet.newAudioClip(loader.getResource("soundRes/startScreenSound.mp3"));
 			for(int i=1;i<=shootSound.length;i++){
 				shootSound[i-1]=Applet.newAudioClip(loader.getResource("soundRes/shootSound"+i+".wav"));
 			}

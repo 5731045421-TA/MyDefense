@@ -1,5 +1,8 @@
 package game;
 import java.awt.*;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
+import java.awt.image.BufferedImageOp;
 
 public class Mob extends Rectangle{
 	/**
@@ -154,8 +157,11 @@ public class Mob extends Rectangle{
 	public void checkDeath(){
 		if(health == 0){
 			deleteMob();
+			Resource.deathSound.play();//play dead sound
 		}
 	}
+	
+	
 	
 	public boolean isDead(){
 		if(health == 0){
@@ -166,8 +172,19 @@ public class Mob extends Rectangle{
 	}
 	
 	int counter = 0,change = 50,ani = 0;
+	AffineTransform at=new AffineTransform();
+	AffineTransformOp aop;
 	public void draw(Graphics g){
 		Graphics2D g2d = (Graphics2D)g;
+		
+		//create rotater
+		int numquadrants=0;
+		if(direction==up)numquadrants=3;
+		else if(direction==down)numquadrants=1;
+		else if(direction==left)numquadrants=2;
+		at.quadrantRotate(numquadrants,20,20);
+		aop=new AffineTransformOp(at, AffineTransformOp.TYPE_BICUBIC);
+		
 		if(inGame){
 			if(counter >= change){
 				ani++;
@@ -177,13 +194,16 @@ public class Mob extends Rectangle{
 			}else {
 				counter++;
 			}
-			if(type == 1){
-				g2d.drawImage(Resource.animationCreep1[mobID][ani], null, x	,y);
+			//System.out.println("set transform");
+			if(type == 1){				
+				g2d.drawImage(Resource.animationCreep1[mobID][ani], aop, x,y);
 			}else if(type == 2){
-				g2d.drawImage(Resource.animationCreep2[mobID][ani], null, x	,y);
+				g2d.drawImage(Resource.animationCreep2[mobID][ani], aop, x,y);
 			}else if(type == 3){
-				g2d.drawImage(Resource.animationCreep3[mobID][ani], null, x	,y);
+				g2d.drawImage(Resource.animationCreep3[mobID][ani], aop, x,y);
 			}
+			at.setToIdentity();
+			//System.out.println(GameScreen.mobs[0].direction);
 			
 			//health bar.
 			g2d.setColor(Color.RED);

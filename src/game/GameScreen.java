@@ -27,7 +27,7 @@ public class GameScreen extends JPanel implements Runnable {
 	
 	public static int myWidth, myHeight;
 	public static int coinage = 200,health = 10;
-	public static int killed = 0,killToWin = 0,level = 1,maxLevel = 3;
+	public static int killed = 0,killToWin = 0,level = 2,maxLevel = 3;
 	public static int mobType = 0;
 	
 	public int spawnTime = 1200,spawnFrame = 2400;
@@ -107,6 +107,7 @@ public class GameScreen extends JPanel implements Runnable {
 					g2.setFont(new Font("Courier New", Font.ITALIC, 20));
 					g2.drawString("Press Enter to Continune.....", myWidth/2-170, myHeight/2+45);
 				}
+				Resource.congratSound.play();
 			}
 		}else {
 			startScreen.draw(g);

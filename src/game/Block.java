@@ -7,6 +7,7 @@ public class Block extends Rectangle {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	public Rectangle towerSquare;
 	public int towerSquareSize = 80;
 	public int groundID;
@@ -52,7 +53,7 @@ public class Block extends Rectangle {
 	public void attack() {
 		if (shotMob != -1 && towerSquare.intersects(GameScreen.mobs[shotMob])) {
 			shoting = true;
-			
+			Resource.shootSound[0].play();
 		} else {
 			shoting = false;
 		}
