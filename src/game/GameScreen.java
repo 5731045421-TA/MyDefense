@@ -108,6 +108,7 @@ public class GameScreen extends JPanel implements Runnable {
 					g2.drawString("Press Enter to Continune.....", myWidth/2-170, myHeight/2+45);
 				}
 				Resource.congratSound.play();
+				System.out.println("played congrat sound");
 			}
 		}else {
 			startScreen.draw(g);

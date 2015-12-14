@@ -23,7 +23,7 @@ public class StartScreen extends JComponent{
 	}
 	public StartScreen() {
 		setPreferredSize(new Dimension(700, 550));
-		Resource.startScreenSound.play();
+		//Resource.startScreenSound.play();
 	}
 	
 	public void draw(Graphics g){

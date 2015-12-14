@@ -49,7 +49,6 @@ public class Resource {
 			turret[4] = ImageIO.read(load.getResource("res/tower/turret-5-1.png"));
 			turret[5] = ImageIO.read(load.getResource("res/tower/turret-6-1.png"));
 			turret[6] = ImageIO.read(load.getResource("res/tower/turret-7-1.png"));
-			
 			turret[7] = ImageIO.read(load.getResource("res/tower/turret-1-3.png"));
 			turret[8] = ImageIO.read(load.getResource("res/tower/turret-2-3.png"));
 			turret[9] = ImageIO.read(load.getResource("res/tower/turret-3-3.png"));
@@ -82,7 +81,8 @@ public class Resource {
 			ClassLoader loader=Resource.class.getClassLoader();
 			soundTrack=Applet.newAudioClip(loader.getResource("soundRes/soundTrack.wav"));
 			coinSound=Applet.newAudioClip(loader.getResource("soundRes/coinSound.wav"));
-			deathSound=Applet.newAudioClip(loader.getResource("soundRes/deathSound.wav"));
+			deathSound=Applet.newAudioClip(loader.getResource("soundRes/deathSound2.mp3"));
+			
 			congratSound=Applet.newAudioClip(loader.getResource("soundRes/congratSound.mp3"));
 			gameoverSound=Applet.newAudioClip(loader.getResource("soundRes/gameoverSound.mp3"));
 			startScreenSound=Applet.newAudioClip(loader.getResource("soundRes/startScreenSound.mp3"));
