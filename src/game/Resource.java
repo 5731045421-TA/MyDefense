@@ -79,17 +79,17 @@ public class Resource {
 		
 		try{//sound
 			ClassLoader loader=Resource.class.getClassLoader();
-			soundTrack=Applet.newAudioClip(loader.getResource("soundRes/soundTrack.wav"));
+			soundTrack=Applet.newAudioClip(loader.getResource("soundRes/soundTrack3.wav"));
 			coinSound=Applet.newAudioClip(loader.getResource("soundRes/coinSound.wav"));
-			deathSound=Applet.newAudioClip(loader.getResource("soundRes/deathSound2.mp3"));
+			deathSound=Applet.newAudioClip(loader.getResource("soundRes/deathSound2.wav"));
 			
-			congratSound=Applet.newAudioClip(loader.getResource("soundRes/congratSound.mp3"));
-			gameoverSound=Applet.newAudioClip(loader.getResource("soundRes/gameoverSound.mp3"));
-			startScreenSound=Applet.newAudioClip(loader.getResource("soundRes/startScreenSound.mp3"));
-			for(int i=1;i<=shootSound.length;i++){
-				shootSound[i-1]=Applet.newAudioClip(loader.getResource("soundRes/shootSound"+i+".wav"));
-			}
-			
+			congratSound=Applet.newAudioClip(loader.getResource("soundRes/congratSound.wav"));
+			gameoverSound=Applet.newAudioClip(loader.getResource("soundRes/gameoverSound.wav"));
+			startScreenSound=Applet.newAudioClip(loader.getResource("soundRes/startScreenSound.wav"));
+//			for(int i=1;i<=shootSound.length;i++){
+//				shootSound[i-1]=Applet.newAudioClip(loader.getResource("soundRes/shootSound"+i+".wav"));
+//			}
+			shootSound[0]=Applet.newAudioClip(loader.getResource("soundRes/shortShootSound.wav"));
 			
 		}catch(Exception e){
 			soundTrack=null;

@@ -55,7 +55,7 @@ public class Block extends Rectangle {
 	public void attack() {
 		if (shotMob != -1 && towerSquare.intersects(GameScreen.mobs[shotMob])) {
 			shoting = true;
-			Resource.shootSound[0].play();
+			
 		} else {
 			shoting = false;
 		}
@@ -93,7 +93,7 @@ public class Block extends Rectangle {
 			}else{
 				loseFrame++;
 			}
-			
+			Resource.shootSound[0].play();
 			
 		}
 	}
