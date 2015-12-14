@@ -114,6 +114,8 @@ public class GameScreen extends JComponent implements Runnable {
 				g2.drawString("Press Enter to Continune.....", myWidth/2-170, myHeight/2+45);
 			}else if(allClear){
 				drawAllClear(g);
+			}else {
+				drawAllClear(g);
 			}
 		}
 	
