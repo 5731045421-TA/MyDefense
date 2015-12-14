@@ -4,6 +4,8 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImageOp;
 
+import render.GameScreen;
+
 public class Mob extends Rectangle{
 	/**
 	 * 
@@ -155,7 +157,7 @@ public class Mob extends Rectangle{
 	}
 	
 	public void checkDeath(){
-		if(health == 0){
+		if(health <= 0){
 			deleteMob();
 			Resource.deathSound.play();//play dead sound
 		}
@@ -164,7 +166,7 @@ public class Mob extends Rectangle{
 	
 	
 	public boolean isDead(){
-		if(health == 0){
+		if(health <= 0){
 			return true;
 		}else{
 			return false;

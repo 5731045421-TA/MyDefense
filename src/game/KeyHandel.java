@@ -6,6 +6,10 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
+import javax.swing.JComponent;
+
+import render.GameScreen;
+
 
 
 public class KeyHandel implements MouseMotionListener, MouseListener,KeyListener {
@@ -33,33 +37,39 @@ public class KeyHandel implements MouseMotionListener, MouseListener,KeyListener
 	@Override
 	public void mousePressed(MouseEvent e) {
 		GameScreen.store.click(e.getButton());
+		if(e.getButton()==1)InputUtility.setMouseLeftDown(true);
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-
+		InputUtility.setMouseLeftDown(false);
 	}
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		GameScreen.mse = new Point((e.getX()) + ((Frame.size.width - GameScreen.myWidth) / 2),
-				(e.getY()) + ((Frame.size.height - GameScreen.myHeight) / 2));
+		
 	}
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
 //		Screen.mse = new Point((e.getX()) - ((Frame.size.width - Screen.myWidth) / 2),
 //				(e.getY()) - ((Frame.size.height - Screen.myHeight) / 2));
-	
+		InputUtility.setMouseX(e.getX());
+		InputUtility.setMouseX(e.getY());
 		GameScreen.mse = new Point(e.getX(), e.getY()-32);
 	}
-
+	
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if(e.getKeyCode() == 32){
+		InputUtility.setKeyTriggered(e.getKeyCode());
+		if(e.getKeyCode() == 32){//spacebar
 			GameScreen.startEnter = true;
 		}
-		if(e.getKeyCode() == 10){
+		if(e.getKeyCode() == 10){//enter
+			if(!GameScreen.isWin){
+				screen.pause();
+			}
+			
 			GameScreen.pressEnter = true;
 			screen.nextMission();
 		}

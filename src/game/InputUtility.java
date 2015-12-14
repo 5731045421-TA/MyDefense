@@ -9,6 +9,12 @@ public class InputUtility {
 	private static boolean[] keyTriggered = new boolean[256];
 
 	
+	public static boolean[] getKeyPressed() {
+		return keyPressed;
+	}
+	public static void setKeyPressed(boolean[] keyPressed) {
+		InputUtility.keyPressed = keyPressed;
+	}
 	public static int getMouseX() {
 		return mouseX; 
 	}

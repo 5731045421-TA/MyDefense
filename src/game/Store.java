@@ -7,6 +7,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
+import render.GameScreen;
+
 public class Store {
 	public static int shopWidth = 10;
 	public static int buttonSize = 40;
@@ -60,7 +62,7 @@ public class Store {
 							}
 						}
 					}
-					Resource.coinSound.play();
+					Resource.coinSound.play();//coinSonund
 				}
 			} else if (holdsItem && heldID == Value.airSell) {
 				for (int y = 0; y < GameScreen.room.block.length; y++) {

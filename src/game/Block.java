@@ -1,6 +1,8 @@
 package game;
 import java.awt.*;
 
+import render.GameScreen;
+
 
 public class Block extends Rectangle {
 	/**
@@ -30,7 +32,7 @@ public class Block extends Rectangle {
 
 	public void drawGround(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
-		//g2d.drawRect(x, y, width, height);
+		g2d.drawRect(x, y, width, height);
 		if (groundID == Value.groundGrass)
 			g2d.drawImage(Resource.grass, null, x, y);
 		else if (groundID == Value.groundRoad)
@@ -44,8 +46,8 @@ public class Block extends Rectangle {
 		if (airID == Value.airBase) {
 			g2d.drawImage(Resource.base, null, x, y);
 		} else if (airID >= 0) {
-			// g2d.drawRect(towerSquare.x, towerSquare.y, towerSquare.width,
-			// towerSquare.height);
+//			 g2d.drawRect(towerSquare.x, towerSquare.y, towerSquare.width,
+//			 towerSquare.height);
 			g2d.drawImage(Resource.turret[airID], null, x, y);
 		}
 	}
@@ -75,10 +77,10 @@ public class Block extends Rectangle {
 				}
 			}
 		}
-		//bug
+	
 		if(shoting){
-			if(loseFrame>=loseTime){
-				GameScreen.mobs[shotMob].looseHealth(1);
+			if(loseFrame>=loseTime&&airID>=0){
+					GameScreen.mobs[shotMob].looseHealth(Tower.amo[airID%7]);
 				if(GameScreen.mobs[shotMob].isDead()){
 					getMoney(GameScreen.mobs[shotMob].mobID);
 					shoting = false;
@@ -103,15 +105,15 @@ public class Block extends Rectangle {
 
 	public void fight(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
-		if (GameScreen.isDebug) {
-			if (airID >= 0) {
-				//g2d.drawRect(towerSquare.x, towerSquare.y, towerSquare.width, towerSquare.height);
-				g2d.setComposite(transcluentWhite);
-				g2d.setColor(Color.LIGHT_GRAY);
-				g2d.fillOval(towerSquare.x, towerSquare.y, towerSquare.width, towerSquare.height);
-				g2d.setComposite(opaque);
-			}
+
+		if (airID >= 0) {
+			//g2d.drawRect(towerSquare.x, towerSquare.y, towerSquare.width, towerSquare.height);
+			g2d.setComposite(transcluentWhite);
+			g2d.setColor(Color.LIGHT_GRAY);
+			g2d.fillOval(towerSquare.x, towerSquare.y, towerSquare.width, towerSquare.height);
+			g2d.setComposite(opaque);
 		}
+		
 		if (shoting) {
 			g.setColor(Color.YELLOW);
 			g.drawLine(x + (width / 2), y + (height / 2), GameScreen.mobs[shotMob].x + (GameScreen.mobs[shotMob].width / 2),

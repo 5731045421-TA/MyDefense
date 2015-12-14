@@ -77,7 +77,7 @@ public class Resource {
 			e.printStackTrace();
 		}
 		
-		try{
+		try{//sound
 			ClassLoader loader=Resource.class.getClassLoader();
 			soundTrack=Applet.newAudioClip(loader.getResource("soundRes/soundTrack.wav"));
 			coinSound=Applet.newAudioClip(loader.getResource("soundRes/coinSound.wav"));

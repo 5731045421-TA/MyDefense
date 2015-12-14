@@ -1,6 +1,8 @@
 package game;
 import java.awt.Graphics;
 
+import render.GameScreen;
+
 public class Room {
 	public int worldWidth = 15;
 	public int worldHeight = 10;

@@ -2,6 +2,7 @@ package game;
 import java.util.Scanner;
 
 import exception.LoadMissionException;
+import render.GameScreen;
 
 public class LoadMap {
 	private Scanner loadScanner;
@@ -26,7 +27,7 @@ public class LoadMap {
 				}
 			}
 			loadScanner.close();
-			Resource.soundTrack.play();
+			Resource.soundTrack.play();//soundTrack
 		} catch (Exception e) {
 			throw new LoadMissionException(e);
 		}
