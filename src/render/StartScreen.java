@@ -1,25 +1,31 @@
-package ui;
+package render;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
+import Main.Main;
 import game.Resource;
 
-public class StartScreen extends JComponent implements Runnable{
+public class StartScreen extends JComponent {
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	public static BufferedImage startBG = null;
-	private boolean isFirst = true;
-	public Thread startThread = new Thread(this);
+	public static boolean isFirst = true;
+	public static JButton newGame = new JButton("New Game");
+
 	
 	static{
 		try {
@@ -31,28 +37,24 @@ public class StartScreen extends JComponent implements Runnable{
 	}
 	public StartScreen(JFrame frame) {
 		setPreferredSize(new Dimension(700, 550));
-		
-		
-		frame.addKeyListener(new KeyListener() {
+		add(newGame);
+		newGame.addActionListener(new ActionListener() {
 			
 			@Override
-			public void keyTyped(KeyEvent e) {
-				// TODO Auto-generated method stub
+			public void actionPerformed(ActionEvent e) {
+				GameScreen GameScreen = new GameScreen(frame);
+				System.out.println("SADcasDFASF");
+				frame.remove(Main.start);
+				frame.add(GameScreen);
+				frame.setVisible(true);
 				
-			}
-			
-			@Override
-			public void keyReleased(KeyEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void keyPressed(KeyEvent e) {
-				// TODO Auto-generated method stub
 				
 			}
 		});
+		
+		
+		
+		
 		
 	}
 	int counter = 0;
@@ -61,36 +63,10 @@ public class StartScreen extends JComponent implements Runnable{
 		Graphics2D g2 = (Graphics2D)g;
 		g2.drawImage(startBG, null, 0, 0);
 		
-		if(counter == 3){
-			g2.setFont(new Font("Courier New", Font.ITALIC, 50));
-			g2.setColor(Color.WHITE);
-			g2.drawString("HERE", 300, 250);
-			counter = 0;
-		}else counter++;
-		
 		playStartSong();
 	}
 
-	@Override
-	public void run() {
-		while(true){
-			
-			if(isFirst){
-				
-				isFirst = false;
-			}
-			
-			repaint();
-
-			try {
-				Thread.sleep(10);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		
-	}
+	
 	
 	public void playStartSong(){
 		Resource.soundTrack.play();

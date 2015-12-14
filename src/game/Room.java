@@ -1,7 +1,7 @@
 package game;
 import java.awt.Graphics;
 
-import ui.GameScreen;
+import render.GameScreen;
 
 public class Room {
 	public int worldWidth = 15;

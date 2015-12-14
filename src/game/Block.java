@@ -1,7 +1,7 @@
 package game;
 import java.awt.*;
 
-import ui.GameScreen;
+import render.GameScreen;
 
 
 public class Block extends Rectangle {

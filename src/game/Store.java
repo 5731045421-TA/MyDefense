@@ -7,7 +7,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
-import ui.GameScreen;
+import render.GameScreen;
 
 public class Store {
 	public static int shopWidth = 10;

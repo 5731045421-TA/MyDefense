@@ -2,7 +2,7 @@ package game;
 import java.util.Scanner;
 
 import exception.LoadMissionException;
-import ui.GameScreen;
+import render.GameScreen;
 
 public class LoadMap {
 	private Scanner loadScanner;

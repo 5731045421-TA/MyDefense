@@ -8,7 +8,7 @@ import java.awt.event.MouseMotionListener;
 
 import javax.swing.JComponent;
 
-import ui.GameScreen;
+import render.GameScreen;
 
 
 
@@ -66,6 +66,10 @@ public class KeyHandel implements MouseMotionListener, MouseListener,KeyListener
 			GameScreen.startEnter = true;
 		}
 		if(e.getKeyCode() == 10){//enter
+			if(!GameScreen.isWin){
+				screen.pause();
+			}
+			
 			GameScreen.pressEnter = true;
 			screen.nextMission();
 		}
@@ -76,7 +80,6 @@ public class KeyHandel implements MouseMotionListener, MouseListener,KeyListener
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 		GameScreen.pressEnter = false;
-		//GameScreen.startEnter = false;
 	}
 
 	@Override

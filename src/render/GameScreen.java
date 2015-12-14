@@ -1,4 +1,4 @@
-package ui;
+package render;
 import java.awt.*;
 import javax.swing.*;
 
@@ -21,6 +21,7 @@ public class GameScreen extends JComponent implements Runnable {
 	public static boolean startEnter = false;
 	public static boolean isWin = false;
 	public static boolean pressEnter = false;
+	public static boolean isPause = false;
 
 	public static Point mse = new Point(0, 0);
 
@@ -45,7 +46,7 @@ public class GameScreen extends JComponent implements Runnable {
 		frame.addMouseMotionListener(new KeyHandel(this));
 		frame.addMouseListener(new KeyHandel(this));
 		frame.addKeyListener(new KeyHandel(this));
-		
+		//requestFocus();
 		thread.start();
 	}
 
@@ -159,7 +160,20 @@ public class GameScreen extends JComponent implements Runnable {
 						mobs[i].move();
 					}
 				}
-			}else{
+			}
+			if(isPause){
+				try {
+					synchronized (thread) {
+						thread.wait();
+						
+					}
+					
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			else{
 				if(isWin){
 					try {
 						synchronized (thread) {
@@ -197,6 +211,18 @@ public class GameScreen extends JComponent implements Runnable {
 	public synchronized void nextMission() {
 		synchronized (thread) {
 			thread.notify();
+		}
+		
+	}
+	
+	public synchronized void pause() {
+		if(!isPause){
+			isPause = true;
+		}else{
+			synchronized (thread) {
+				thread.notify();
+			}
+			isPause = false;
 		}
 		
 	}
