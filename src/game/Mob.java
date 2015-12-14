@@ -1,6 +1,8 @@
 package game;
 import java.awt.*;
 
+import ui.GameScreen;
+
 public class Mob extends Rectangle{
 	/**
 	 * 
@@ -152,13 +154,13 @@ public class Mob extends Rectangle{
 	}
 	
 	public void checkDeath(){
-		if(health == 0){
+		if(health <= 0){
 			deleteMob();
 		}
 	}
 	
 	public boolean isDead(){
-		if(health == 0){
+		if(health <= 0){
 			return true;
 		}else{
 			return false;

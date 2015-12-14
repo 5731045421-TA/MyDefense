@@ -7,6 +7,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
+import ui.GameScreen;
+
 public class Store {
 	public static int shopWidth = 10;
 	public static int buttonSize = 40;
