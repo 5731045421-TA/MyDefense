@@ -1,5 +1,4 @@
 package exception;
-import java.io.IOException;
 
 public class LoadMissionException extends Exception {
 

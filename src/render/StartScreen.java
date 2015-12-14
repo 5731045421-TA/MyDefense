@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 import Main.Main;
 import game.Resource;
 
-public class StartScreen extends JComponent {
+public class StartScreen extends JPanel {
 	
 	/**
 	 * 
@@ -36,17 +36,22 @@ public class StartScreen extends JComponent {
 		}
 	}
 	public StartScreen(JFrame frame) {
-		setPreferredSize(new Dimension(700, 550));
-		add(newGame);
+		this.setPreferredSize(new Dimension(700, 550));
+		this.setLayout(null);
+		newGame.setBounds(300, 450, 100, 30);
+		this.add(newGame);
 		newGame.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				GameScreen GameScreen = new GameScreen(frame);
+				
 				System.out.println("SADcasDFASF");
 				frame.remove(Main.start);
+				GameScreen GameScreen = new GameScreen(frame);
 				frame.add(GameScreen);
+				
 				frame.setVisible(true);
+				frame.validate();
 				
 				
 			}
@@ -69,7 +74,7 @@ public class StartScreen extends JComponent {
 	
 	
 	public void playStartSong(){
-		Resource.soundTrack.play();
+		Resource.coinSound.play();
 	}
 	
 	

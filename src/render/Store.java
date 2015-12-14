@@ -1,4 +1,4 @@
-package game;
+package render;
 
 import java.awt.AlphaComposite;
 import java.awt.Color;
@@ -7,7 +7,9 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
-import render.GameScreen;
+import exception.SellTowerException;
+import game.Resource;
+import game.Value;
 
 public class Store {
 	public static int shopWidth = 10;
@@ -34,7 +36,7 @@ public class Store {
 		define();
 	}
 
-	public void click(int mouseButton) {
+	public void click(int mouseButton) throws SellTowerException{
 		if (mouseButton == 1) { // left mouse button
 			for (int i = 0; i < button.length; i++) {
 				if (button[i].contains(GameScreen.mse)) {
@@ -64,20 +66,27 @@ public class Store {
 					}
 					Resource.coinSound.play();//coinSonund
 				}
-			} else if (holdsItem && heldID == Value.airSell) {
-				for (int y = 0; y < GameScreen.room.block.length; y++) {
-					for (int x = 0; x < GameScreen.room.block[0].length; x++) {
-						if (GameScreen.room.block[y][x].contains(GameScreen.mse)) {
-							if (GameScreen.room.block[y][x].airID >= 0) {
-
-								GameScreen.coinage += buttonPrice[GameScreen.room.block[y][x].airID % 7] / 2;
-								GameScreen.room.block[y][x].airID = -1;
-								GameScreen.room.block[y][x].shoting = false;
+			} try { 
+				if (holdsItem && heldID == Value.airSell) {
+					for (int y = 0; y < GameScreen.room.block.length; y++) {
+						for (int x = 0; x < GameScreen.room.block[0].length; x++) {
+							if (GameScreen.room.block[y][x].contains(GameScreen.mse)) {
+								if (GameScreen.room.block[y][x].airID >= 0) {
+		
+									GameScreen.coinage += buttonPrice[GameScreen.room.block[y][x].airID % 7] / 2;
+									GameScreen.room.block[y][x].airID = -1;
+									GameScreen.room.block[y][x].shoting = false;
+								}
 							}
 						}
 					}
 				}
-			} else if (holdsItem && heldID == Value.airUpGrade) {
+				Resource.coinSound.play();
+			} catch (Exception e) {
+				throw new SellTowerException(e);
+			}
+				
+			} if (holdsItem && heldID == Value.airUpGrade) {
 				for (int y = 0; y < GameScreen.room.block.length; y++) {
 					for (int x = 0; x < GameScreen.room.block[0].length; x++) {
 						if (GameScreen.room.block[y][x].contains(GameScreen.mse)) {
@@ -90,9 +99,9 @@ public class Store {
 						}
 					}
 				}
+				Resource.coinSound.play();
 			}
 		}
-	}
 
 	private void define() {
 		for (int i = 0; i < button.length; i++) {

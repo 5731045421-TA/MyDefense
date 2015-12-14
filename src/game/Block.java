@@ -71,7 +71,7 @@ public class Block extends Rectangle {
 						if (towerSquare.intersects(GameScreen.mobs[i])) {
 							shoting = true;
 							shotMob = i;
-							
+							Resource.shootSound[0].play();
 						}
 					}
 				}
@@ -80,7 +80,7 @@ public class Block extends Rectangle {
 	
 		if(shoting){
 			if(loseFrame>=loseTime&&airID>=0){
-					GameScreen.mobs[shotMob].looseHealth(Tower.amo[airID%7]);
+					GameScreen.mobs[shotMob].looseHealth(Tower.amo[airID]);
 				if(GameScreen.mobs[shotMob].isDead()){
 					getMoney(GameScreen.mobs[shotMob].mobID);
 					shoting = false;
@@ -115,9 +115,11 @@ public class Block extends Rectangle {
 		}
 		
 		if (shoting) {
-			g.setColor(Color.YELLOW);
-			g.drawLine(x + (width / 2), y + (height / 2), GameScreen.mobs[shotMob].x + (GameScreen.mobs[shotMob].width / 2),
+			g2d.setStroke(new BasicStroke(3));
+			g2d.setColor(Color.YELLOW);
+			g2d.drawLine(x + (width / 2), y + (height / 2), GameScreen.mobs[shotMob].x + (GameScreen.mobs[shotMob].width / 2),
 					GameScreen.mobs[shotMob].y + (GameScreen.mobs[shotMob].height / 2));
+			g2d.setStroke(new BasicStroke(1));
 		}
 
 	}

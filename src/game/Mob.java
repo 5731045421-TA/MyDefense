@@ -180,6 +180,7 @@ public class Mob extends Rectangle{
 		Graphics2D g2d = (Graphics2D)g;
 		
 		//create rotater
+		
 		int numquadrants=0;
 		if(direction==up)numquadrants=3;
 		else if(direction==down)numquadrants=1;

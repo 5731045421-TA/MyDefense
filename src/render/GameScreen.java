@@ -6,8 +6,8 @@ import exception.LoadMissionException;
 import game.KeyHandel;
 import game.LoadMap;
 import game.Mob;
+import game.Resource;
 import game.Room;
-import game.Store;
 
 public class GameScreen extends JComponent implements Runnable {
 	/**
@@ -18,10 +18,10 @@ public class GameScreen extends JComponent implements Runnable {
 	public Thread thread = new Thread(this);
 	
 	public static boolean isFirst = true;
-	public static boolean startEnter = false;
 	public static boolean isWin = false;
 	public static boolean pressEnter = false;
 	public static boolean isPause = false;
+	public boolean allClear = false;
 
 	public static Point mse = new Point(0, 0);
 
@@ -31,7 +31,7 @@ public class GameScreen extends JComponent implements Runnable {
 	public static StartScreen startScreen;
 	
 	public static int myWidth, myHeight;
-	public static int coinage = 200,health = 10;
+	public static int coinage = 2000,health = 10;
 	public static int killed = 0,killToWin = 0,level = 1,maxLevel = 3;
 	public static int mobType = 0;
 	
@@ -46,8 +46,9 @@ public class GameScreen extends JComponent implements Runnable {
 		frame.addMouseMotionListener(new KeyHandel(this));
 		frame.addMouseListener(new KeyHandel(this));
 		frame.addKeyListener(new KeyHandel(this));
-		//requestFocus();
+		
 		thread.start();
+		frame.requestFocus();
 	}
 
 
@@ -102,22 +103,30 @@ public class GameScreen extends JComponent implements Runnable {
 		}
 		
 		if(isWin){
+			Resource.shootSound[0].stop();
 			g2.clearRect(0, 0, getWidth(), getHeight());
 			g2.setFont(new Font("Courier New", Font.BOLD, 35));
-			if(level == maxLevel){
-				g2.drawString("Congratulations!", myWidth/2-160, myHeight/2);
-				g2.drawString("You Win This Game", myWidth/2-180, myHeight/2+45);
-				g2.setFont(new Font("Courier New", Font.ITALIC, 20));
-				g2.drawString("press enter to exit", myWidth/2-170, myHeight/2+85);
-			}else{
+			System.out.println("win");
+			if(level < maxLevel){
 				
 				g2.drawString("Congratulations!", myWidth/2-160, myHeight/2);
 				g2.setFont(new Font("Courier New", Font.ITALIC, 20));
 				g2.drawString("Press Enter to Continune.....", myWidth/2-170, myHeight/2+45);
+			}else if(allClear){
+				drawAllClear(g);
 			}
 		}
 	
 		
+	}
+	
+	public void drawAllClear(Graphics g){
+		Graphics2D g2 = (Graphics2D) g;
+		g2.drawString("Congratulations!", myWidth/2-160, myHeight/2);
+		g2.drawString("You Win This Game", myWidth/2-180, myHeight/2+45);
+		g2.setFont(new Font("Courier New", Font.ITALIC, 20));
+		g2.drawString("press enter to exit", myWidth/2-170, myHeight/2+85);
+	
 	}
 	
 	public static void countKill(){
@@ -174,6 +183,7 @@ public class GameScreen extends JComponent implements Runnable {
 				}
 			}
 			else{
+				repaint();
 				if(isWin){
 					try {
 						synchronized (thread) {
@@ -196,7 +206,6 @@ public class GameScreen extends JComponent implements Runnable {
 				}
 			}
 
-			repaint();
 
 			try {
 				Thread.sleep(2);
