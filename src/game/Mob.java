@@ -61,7 +61,6 @@ public class Mob extends Rectangle{
 		this.mobID = mobID;
 		this.inGame = true;
 		this.isDead = false;
-		
 	}
 	
 	public int walkFrame = 0,walkSpeed = 10;

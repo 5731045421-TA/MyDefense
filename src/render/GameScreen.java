@@ -1,7 +1,6 @@
 package render;
 import java.awt.*;
 import javax.swing.*;
-
 import exception.LoadMissionException;
 import game.KeyHandel;
 import game.LoadMap;
@@ -9,7 +8,6 @@ import game.Map;
 import game.Mob;
 import game.Player;
 import game.Resource;
-
 
 public class GameScreen extends JComponent implements Runnable {
 	/**
@@ -54,6 +52,7 @@ public class GameScreen extends JComponent implements Runnable {
 
 
 	public void define() {
+		GameScreen.gameoverSoundTrigger=false;
 		map = new Map();
 		loadmap = new LoadMap();
 		store = new Store();
@@ -70,16 +69,16 @@ public class GameScreen extends JComponent implements Runnable {
 		Resource.startScreenSound.stop();
 		Resource.congratSound.stop();
 		Resource.gameoverSound.stop();
+		System.out.println("stop gameoverSound");
 		Resource.soundTrack.loop();//soundTrack
 		GameScreen.gameoverSoundTrigger=true;//gameoverSound will play only once
 	}
 	
-	public static boolean gameoverSoundTrigger;
+	public static boolean gameoverSoundTrigger=true;
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
-		
 		if (isFirst) {
 			myWidth = getWidth();
 			myHeight = getHeight();
@@ -102,12 +101,12 @@ public class GameScreen extends JComponent implements Runnable {
 		}
 		
 		store.draw(g);// Draw the store
-		if(!isWin && Player.health < 1){
+		
+		if(!isWin && Player.health < 1){//game over
 			Resource.shootSound.stop();	
 			g2.setColor(new Color(240, 20, 20));
 			g2.setFont(new Font("Courier New", Font.BOLD, 40));
-			g2.drawString("GAME OVER!", myWidth/2-90, myHeight/2);
-			//g2.drawString("Press Enter", myWidth/2-110, myHeight/2+45);			
+			g2.drawString("GAME OVER!", myWidth/2-90, myHeight/2);		
 			g2.drawString("Press spacebar to retry", myWidth/2-300, myHeight/2+45);
 			
 			if(retry){
@@ -116,16 +115,18 @@ public class GameScreen extends JComponent implements Runnable {
 				Player.health = 10;
 				define();
 				retry = false;
-			
 			}
+			
 			if (gameoverSoundTrigger) {
+				gameoverSoundTrigger=false;
 				Resource.soundTrack.stop();
 				Resource.shootSound.stop();
 				Resource.gameoverSound.play();
-
-				gameoverSoundTrigger=false;
+				System.out.println("play gameover sound");				
 			}
+			
 		}
+		//System.out.println(gameoverSoundTrigger);
 		
 		if(isWin){			
 			Resource.soundTrack.stop();
