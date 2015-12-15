@@ -23,7 +23,7 @@ public class GameScreen extends JComponent implements Runnable {
 	public static boolean isWin = false;
 	public static boolean pressEnter = false;
 	public static boolean isPause = false;
-	public boolean allClear = false;
+	public static boolean retry = false;
 
 	public static Point mse = new Point(0, 0);
 
@@ -104,20 +104,20 @@ public class GameScreen extends JComponent implements Runnable {
 		
 		store.draw(g);// Draw the store
 		if(!isWin && Player.health < 1){
-			Resource.shootSound.stop();
-			isPause = true;	
+			Resource.shootSound.stop();	
 			g2.setColor(new Color(240, 20, 20));
 			g2.setFont(new Font("Courier New", Font.BOLD, 40));
 			g2.drawString("GAME OVER!", myWidth/2-90, myHeight/2);
 			//g2.drawString("Press Enter", myWidth/2-110, myHeight/2+45);			
 			g2.drawString("Press Enter to retry", myWidth/2-200, myHeight/2+45);
-			if(pressEnter){
+			
+			if(retry){
 				Player.killed = 0;
 				Player.coinage = 200;
 				Player.health = 2;//TODO 10
 				define();
+				retry = false;
 				System.out.println("defile");
-				isPause=false;
 //				if(!pressEnter){
 //					Resource.gameoverSound.stop();
 //					Resource.soundTrack.loop();
@@ -136,6 +136,7 @@ public class GameScreen extends JComponent implements Runnable {
 			
 			Resource.soundTrack.stop();
 			Resource.shootSound.stop();
+			Resource.congratSound.play();
 			g2.clearRect(0, 0, getWidth(), getHeight());
 			g2.setFont(new Font("Courier New", Font.BOLD, 35));
 			System.out.println("win");
@@ -147,7 +148,6 @@ public class GameScreen extends JComponent implements Runnable {
 			}else {
 				drawAllClear(g);
 			}
-			Resource.congratSound.play();
 			System.out.println("play congratSound");
 		}
 	
