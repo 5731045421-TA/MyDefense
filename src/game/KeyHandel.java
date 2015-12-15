@@ -60,8 +60,8 @@ public class KeyHandel implements MouseMotionListener, MouseListener,KeyListener
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
-
-		GameScreen.mse = new Point(e.getX(), e.getY()-32);
+		
+	GameScreen.mse = new Point(e.getX(),e.getY()-32);
 	}
 	
 	@Override
@@ -74,7 +74,7 @@ public class KeyHandel implements MouseMotionListener, MouseListener,KeyListener
 			if(!GameScreen.isWin){
 				screen.pause();
 			}
-			System.out.println("enter");
+			
 			GameScreen.pressEnter = true;
 			screen.nextMission();
 		}

@@ -1,10 +1,12 @@
 package game;
 import java.awt.*;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 
 import render.GameScreen;
 
 
-public class Block extends Rectangle {
+public class DrawingMap extends Rectangle {
 	/**
 	 * 
 	 */
@@ -22,10 +24,8 @@ public class Block extends Rectangle {
 	
 	public final AlphaComposite transcluentWhite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.4f);
 	public final AlphaComposite opaque = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1);
-
 	
-
-	public Block(int x, int y, int width, int height, int groundId, int airID) {
+	public DrawingMap(int x, int y, int width, int height, int groundId, int airID) {
 		setBounds(x, y, width, height);
 		towerSquare = new Rectangle(x - (towerSquareSize / 2), y - (towerSquareSize / 2), width + towerSquareSize,
 					height + towerSquareSize);
@@ -39,6 +39,7 @@ public class Block extends Rectangle {
 	public void drawGround(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.drawRect(x, y, width, height);
+		
 		if (groundID == Value.groundGrass)
 			g2d.drawImage(Resource.grass, null, x, y);
 		else if (groundID == Value.groundRoad)
@@ -47,13 +48,11 @@ public class Block extends Rectangle {
 	
 	public void drawAir(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
-		//g2d.drawRect(x, y, width, height);
 
 		if (airID == Value.airBase) {
 			g2d.drawImage(Resource.base, null, x, y);
 		} else if (airID >= 0) {
-//			 g2d.drawRect(towerSquare.x, towerSquare.y, towerSquare.width,
-//			 towerSquare.height);
+
 			g2d.drawImage(Resource.turret[airID], null, x, y);
 		}
 	}
@@ -65,6 +64,7 @@ public class Block extends Rectangle {
 		} else {
 			shoting = false;
 		}
+		
 		if(shotMob != -1 && GameScreen.mobs[shotMob].isDead){
 			shoting = false;
 		}
@@ -75,6 +75,7 @@ public class Block extends Rectangle {
 					if (GameScreen.mobs[i].inGame) {
 						
 						if (towerSquare.intersects(GameScreen.mobs[i])) {
+							
 							shoting = true;
 							shotMob = i;
 							Resource.shootSound.play();
@@ -92,7 +93,6 @@ public class Block extends Rectangle {
 					shoting = false;
 					shotMob = -1;
 					Player.countKill();
-					System.out.println(Player.killed);
 					GameScreen.hasWon();
 					Resource.shootSound.play();
 				}

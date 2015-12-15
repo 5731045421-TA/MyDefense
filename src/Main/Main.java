@@ -25,12 +25,6 @@ public class Main {
 		start = new StartScreen(frame);
 		frame.add(start);
 		
-
-//			GameScreen GameScreen = new GameScreen(frame);
-//			frame.add(GameScreen);
-
-		
-		
 		frame.setVisible(true);
 		frame.validate();
 		

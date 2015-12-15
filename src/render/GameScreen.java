@@ -33,7 +33,6 @@ public class GameScreen extends JComponent implements Runnable {
 	public static StartScreen startScreen;
 	
 	public static int myWidth, myHeight;
-	public static int coinage = 2000,health = 10;
 	public static int killed = 0,killToWin = 0,level = 1,maxLevel = 3;
 	public static int mobType = 0;
 	
@@ -117,17 +116,13 @@ public class GameScreen extends JComponent implements Runnable {
 				Player.health = 10;
 				define();
 				retry = false;
-				System.out.println("defile");
-//				if(!pressEnter){
-//					Resource.gameoverSound.stop();
-//					Resource.soundTrack.loop();
-//				}
+			
 			}
 			if (gameoverSoundTrigger) {
 				Resource.soundTrack.stop();
 				Resource.shootSound.stop();
 				Resource.gameoverSound.play();
-				System.out.println("paly gameover song");
+
 				gameoverSoundTrigger=false;
 			}
 		}
@@ -138,7 +133,7 @@ public class GameScreen extends JComponent implements Runnable {
 			Resource.congratSound.play();
 			g2.clearRect(0, 0, getWidth(), getHeight());
 			g2.setFont(new Font("Courier New", Font.BOLD, 35));
-			System.out.println("win");
+
 			if(Player.level < Player.maxLevel){
 				
 				g2.drawString("Congratulations!", myWidth/2-160, myHeight/2);
@@ -147,8 +142,9 @@ public class GameScreen extends JComponent implements Runnable {
 			}else {
 				drawAllClear(g);
 			}
-			System.out.println("play congratSound");
+
 		}
+		
 	
 		
 	}
