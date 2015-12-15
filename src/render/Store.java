@@ -94,6 +94,7 @@ public class Store {
 									Player.coinage += buttonPrice[GameScreen.map.block[y][x].airID % 7] / 2;
 									GameScreen.map.block[y][x].airID = -1;
 									GameScreen.map.block[y][x].shoting = false;
+									GameScreen.map.block[y][x].inGame = false;
 								}
 							}
 						}
@@ -174,11 +175,11 @@ public class Store {
 		if (holdsItem) {
 			// draw sample turret
 			if (heldID >= 0) {
-				g2d.setComposite(transcluentWhite);
-				g2d.setColor(Color.WHITE);
-				g2d.fillOval(GameScreen.mse.x - radius[heldID], GameScreen.mse.y - radius[heldID], radius[heldID] * 2,
-						radius[heldID] * 2);
-				g2d.setComposite(opaque);
+//				g2d.setComposite(transcluentWhite);
+//				g2d.setColor(Color.WHITE);
+//				g2d.fillOval(GameScreen.mse.x - radius[heldID], GameScreen.mse.y - radius[heldID], radius[heldID] * 2,
+//						radius[heldID] * 2);
+//				g2d.setComposite(opaque);
 
 				g2d.drawImage(Resource.turret[heldID], null, GameScreen.mse.x - 20, GameScreen.mse.y - 20);
 

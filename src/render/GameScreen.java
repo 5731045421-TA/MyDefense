@@ -109,12 +109,12 @@ public class GameScreen extends JComponent implements Runnable {
 			g2.setFont(new Font("Courier New", Font.BOLD, 40));
 			g2.drawString("GAME OVER!", myWidth/2-90, myHeight/2);
 			//g2.drawString("Press Enter", myWidth/2-110, myHeight/2+45);			
-			g2.drawString("Press Enter to retry", myWidth/2-200, myHeight/2+45);
+			g2.drawString("Press spacebar to retry", myWidth/2-300, myHeight/2+45);
 			
 			if(retry){
 				Player.killed = 0;
 				Player.coinage = 200;
-				Player.health = 2;//TODO 10
+				Player.health = 10;
 				define();
 				retry = false;
 				System.out.println("defile");
@@ -183,7 +183,7 @@ public class GameScreen extends JComponent implements Runnable {
 			isWin = true;
 			Player.killed = 0;
 			Player.coinage = 200;
-			Player.health = 1; //TODO 10
+			Player.health = 10; 
 		}
 	}
 	

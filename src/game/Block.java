@@ -18,16 +18,22 @@ public class Block extends Rectangle {
 
 	public int shotMob = -1;
 	public boolean shoting = false;
+	public boolean inGame = true;
 	
 	public final AlphaComposite transcluentWhite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.4f);
 	public final AlphaComposite opaque = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1);
 
+	
+
 	public Block(int x, int y, int width, int height, int groundId, int airID) {
 		setBounds(x, y, width, height);
 		towerSquare = new Rectangle(x - (towerSquareSize / 2), y - (towerSquareSize / 2), width + towerSquareSize,
-				height + towerSquareSize);
+					height + towerSquareSize);
+	
+		
 		this.groundID = groundId;
 		this.airID = airID;
+		this.inGame = true;
 	}
 
 	public void drawGround(Graphics g) {
@@ -112,7 +118,7 @@ public class Block extends Rectangle {
 			g2d.setComposite(opaque);
 		}
 		
-		if (shoting) {
+		if (shoting && inGame) {
 			g2d.setStroke(new BasicStroke(3));
 			g2d.setColor(Color.YELLOW);
 			g2d.drawLine(x + (width / 2), y + (height / 2), GameScreen.mobs[shotMob].x + (GameScreen.mobs[shotMob].width / 2),
