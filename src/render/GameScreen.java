@@ -51,7 +51,6 @@ public class GameScreen extends JComponent implements Runnable {
 
 
 	public void define() {
-		GameScreen.gameoverSoundTrigger=false;
 		map = new Map();
 		loadmap = new LoadMap();
 		store = new Store();
@@ -68,9 +67,8 @@ public class GameScreen extends JComponent implements Runnable {
 		Resource.startScreenSound.stop();
 		Resource.congratSound.stop();
 		Resource.gameoverSound.stop();
-		System.out.println("stop gameoverSound");
+		//System.out.println("stop gameoverSound");
 		Resource.soundTrack.loop();//soundTrack
-		GameScreen.gameoverSoundTrigger=true;//gameoverSound will play only once
 	}
 	
 	public static boolean gameoverSoundTrigger=true;
@@ -121,9 +119,8 @@ public class GameScreen extends JComponent implements Runnable {
 				Resource.soundTrack.stop();
 				Resource.shootSound.stop();
 				Resource.gameoverSound.play();
-				System.out.println("play gameover sound");				
+				//System.out.println("play gameover sound");				
 			}
-			
 		}
 		//System.out.println(gameoverSoundTrigger);
 		

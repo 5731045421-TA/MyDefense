@@ -111,7 +111,7 @@ public class DrawingMap extends Rectangle {
 		Graphics2D g2d = (Graphics2D) g;
 
 		if (airID >= 0) {
-			g2d.drawRect(towerSquare.x, towerSquare.y, towerSquare.width, towerSquare.height);
+			//g2d.drawRect(towerSquare.x, towerSquare.y, towerSquare.width, towerSquare.height);
 			g2d.setComposite(transcluentWhite);
 			g2d.setColor(Color.LIGHT_GRAY);
 			g2d.fillOval(towerSquare.x, towerSquare.y, towerSquare.width, towerSquare.height);

@@ -217,6 +217,8 @@ public class Mob extends Rectangle{
 			
 			g2d.setColor(Color.BLACK);
 			g2d.drawRect(x , y - (healthSpace + healthHeight), width, healthHeight - 1);
+			
+			
 		}
 	}
 }

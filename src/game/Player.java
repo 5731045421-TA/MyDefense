@@ -1,8 +1,10 @@
 package game;
 
+import render.GameScreen;
+
 public class Player {
 
-	public static int coinage = 3000,health = 10;
+	public static int coinage = 200,health = 10;
 	public static int killed = 0,killToWin = 0,level = 1,maxLevel = 10;
 
 	
@@ -11,7 +13,8 @@ public class Player {
 	public static void loseHealth() {
 		health--;
 		countKill();
-		
+		GameScreen.gameoverSoundTrigger=true;
+		//System.out.println("gameoversoundtrigger  true");
 	}
 	
 	public static void countKill(){
