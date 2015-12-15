@@ -53,6 +53,11 @@ public class Mob extends Rectangle{
 			this.healthDivider+=1;
 			this.type = 3;
 		}
+		if(i >= 29){
+			this.health+=80;
+			this.healthDivider+=2;
+			this.type = 4;
+		}
 		this.mobID = mobID;
 		this.inGame = true;
 		this.isDead = false;
@@ -120,7 +125,7 @@ public class Mob extends Rectangle{
 				
 				if(GameScreen.map.block[yC][xC].airID == Value.airBase){
 					deleteMob();
-					loseHealth();
+					Player.loseHealth();
 				}
 				
 				isUpward = false;
@@ -135,12 +140,7 @@ public class Mob extends Rectangle{
 			walkFrame++;
 		}
 	}
-	//player health
-	private void loseHealth() {
-		GameScreen.health--;
-		GameScreen.countKill();
-		
-	}
+	
 
 	public void deleteMob() {
 		inGame = false;
@@ -204,6 +204,8 @@ public class Mob extends Rectangle{
 				g2d.drawImage(Resource.animationCreep2[mobID][ani], aop, x,y);
 			}else if(type == 3){
 				g2d.drawImage(Resource.animationCreep3[mobID][ani], aop, x,y);
+			}else if(type > 3){
+				g2d.drawImage(Resource.boss, null, x,y);
 			}
 			at.setToIdentity();
 			//System.out.println(GameScreen.mobs[0].direction);

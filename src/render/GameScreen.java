@@ -1,5 +1,4 @@
 package render;
-import java.applet.AudioClip;
 import java.awt.*;
 import javax.swing.*;
 
@@ -8,6 +7,7 @@ import game.KeyHandel;
 import game.LoadMap;
 import game.Map;
 import game.Mob;
+import game.Player;
 import game.Resource;
 
 
@@ -59,14 +59,20 @@ public class GameScreen extends JComponent implements Runnable {
 		loadmap = new LoadMap();
 		store = new Store();
 		try {
-			loadmap.loadSave("save/mission"+level);
+			loadmap.loadSave("save/mission"+Player.level);
 		} catch (LoadMissionException e) {
-			//all mission clear
+			
 		}
 		
 		for(int i =0;i<mobs.length;i++){
 			mobs[i] = new Mob();
 		}
+		
+		Resource.startScreenSound.stop();
+		Resource.congratSound.stop();
+		Resource.gameoverSound.stop();
+		Resource.soundTrack.loop();//soundTrack
+		GameScreen.gameoverSoundTrigger=true;//gameoverSound will play only once
 	}
 	
 	public static boolean gameoverSoundTrigger;
@@ -97,12 +103,26 @@ public class GameScreen extends JComponent implements Runnable {
 		}
 		
 		store.draw(g);// Draw the store
-		if(!isWin && health < 1){
+		if(!isWin && Player.health < 1){
 			Resource.shootSound.stop();
+			isPause = true;	
 			g2.setColor(new Color(240, 20, 20));
 			g2.setFont(new Font("Courier New", Font.BOLD, 40));
 			g2.drawString("GAME OVER!", myWidth/2-90, myHeight/2);
-			g2.drawString("Press Enter", myWidth/2-110, myHeight/2+45);			
+			//g2.drawString("Press Enter", myWidth/2-110, myHeight/2+45);			
+			g2.drawString("Press Enter to retry", myWidth/2-200, myHeight/2+45);
+			if(pressEnter){
+				Player.killed = 0;
+				Player.coinage = 200;
+				Player.health = 2;//TODO 10
+				define();
+				System.out.println("defile");
+				isPause=false;
+//				if(!pressEnter){
+//					Resource.gameoverSound.stop();
+//					Resource.soundTrack.loop();
+//				}
+			}
 			if (gameoverSoundTrigger) {
 				Resource.soundTrack.stop();
 				Resource.shootSound.stop();
@@ -110,23 +130,20 @@ public class GameScreen extends JComponent implements Runnable {
 				System.out.println("paly gameover song");
 				gameoverSoundTrigger=false;
 			}
-			
-			
 		}
 		
 		if(isWin){
 			
 			Resource.soundTrack.stop();
+			Resource.shootSound.stop();
 			g2.clearRect(0, 0, getWidth(), getHeight());
 			g2.setFont(new Font("Courier New", Font.BOLD, 35));
 			System.out.println("win");
-			if(level < maxLevel){
+			if(Player.level < Player.maxLevel){
 				
 				g2.drawString("Congratulations!", myWidth/2-160, myHeight/2);
 				g2.setFont(new Font("Courier New", Font.ITALIC, 20));
 				g2.drawString("Press Enter to Continune.....", myWidth/2-170, myHeight/2+45);
-			}else if(allClear){
-				drawAllClear(g);
 			}else {
 				drawAllClear(g);
 			}
@@ -146,9 +163,6 @@ public class GameScreen extends JComponent implements Runnable {
 	
 	}
 	
-	public static void countKill(){
-		killed++;
-	}
 	
 	//bug
 	public void mobSpawner(){
@@ -166,11 +180,11 @@ public class GameScreen extends JComponent implements Runnable {
 	}
 	
 	public  static void hasWon(){
-		if(killed == killToWin){
+		if(Player.killed == Player.killToWin){
 			isWin = true;
-			killed = 0;
-			coinage = 200;
-			health = 20;
+			Player.killed = 0;
+			Player.coinage = 200;
+			Player.health = 1; //TODO 10
 		}
 	}
 	
@@ -178,7 +192,7 @@ public class GameScreen extends JComponent implements Runnable {
 	public void run() {
 		while (true) {
 			
-			if (!isFirst && health > 0 &&!isWin) {
+			if (!isFirst && Player.health > 0 &&!isWin) {
 				map.logic();
 				mobSpawner();
 				for(int i = 0;i<mobs.length;i++){
@@ -204,10 +218,10 @@ public class GameScreen extends JComponent implements Runnable {
 					try {
 						synchronized (thread) {
 							thread.wait();
-							if(level == maxLevel){
+							if(Player.level == Player.maxLevel){
 								System.exit(0);
 							}else{
-								level++;
+								Player.level++;
 								define();
 								isWin = false;
 							}

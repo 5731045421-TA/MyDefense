@@ -13,7 +13,7 @@ public class LoadMap {
 			ClassLoader loader = LoadMap.class.getClassLoader();
 			loadScanner = new Scanner(loader.getResourceAsStream(loadPath));
 			while(loadScanner.hasNext()){
-				GameScreen.killToWin = loadScanner.nextInt();
+				Player.killToWin = loadScanner.nextInt();
 				Mob.mobHealth = loadScanner.nextInt();
 				GameScreen.mobType = loadScanner.nextInt();
 				for(int y = 0;y<GameScreen.map.block.length;y++){
@@ -28,10 +28,6 @@ public class LoadMap {
 				}
 			}
 			loadScanner.close();
-			Resource.startScreenSound.stop();
-			Resource.congratSound.stop();
-			Resource.soundTrack.play();//soundTrack
-			GameScreen.gameoverSoundTrigger=true;//gameoverSound will play only once
 		} catch (Exception e) {
 			throw new LoadMissionException(e);
 		}

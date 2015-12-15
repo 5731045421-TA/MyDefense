@@ -82,11 +82,11 @@ public class Block extends Rectangle {
 			if(loseFrame>=loseTime&&airID>=0){
 					GameScreen.mobs[shotMob].looseHealth(Tower.amo[airID]);
 				if(GameScreen.mobs[shotMob].isDead()){
-					getMoney(GameScreen.mobs[shotMob].mobID);
+					Player.getMoney(GameScreen.mobs[shotMob].mobID);
 					shoting = false;
 					shotMob = -1;
-					GameScreen.countKill();
-					System.out.println(GameScreen.killed);
+					Player.countKill();
+					System.out.println(Player.killed);
 					GameScreen.hasWon();
 					Resource.shootSound.play();
 				}
@@ -100,10 +100,6 @@ public class Block extends Rectangle {
 		}
 	}
 	
-	public void getMoney(int mobID){
-		GameScreen.coinage += Value.deathReward[mobID] ;
-			//System.out.println("get Money"+" "+Screen.mobs[shotMob].mobID);
-	}
 
 	public void fight(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
