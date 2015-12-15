@@ -25,10 +25,8 @@ public class Value {
 	public static int airTower6_2 = 12;
 	public static int airTower7_2 = 13;
 	
-	public static int mobAir = -1;
-	public static int mobMob = 0;
-	
-	public static int[] deathReward = {5,10,20,40};
+	public static int[] deathReward = {5,5,10,10};
 	public static int[] amo = {1,2,2,3,3,4,5,2,4,4,6,6,8,10};
+	public static int[] towerRange = {70,80,80,100,100,120,150,90,100,100,120,120,140,170};
 	
 }

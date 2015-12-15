@@ -208,7 +208,9 @@ public class GameScreen extends JComponent implements Runnable {
 				}
 			}
 			else{
+				
 				repaint();
+				
 				if(isWin){
 					try {
 						synchronized (thread) {
@@ -239,6 +241,8 @@ public class GameScreen extends JComponent implements Runnable {
 		}
 
 	}
+
+
 
 	public synchronized void nextMission() {
 		synchronized (thread) {

@@ -16,7 +16,7 @@ public class DrawingMap extends Rectangle {
 	public int towerSquareSize = 80;
 	public int groundID;
 	public int airID;
-	public int loseTime = 100,loseFrame = 0;
+	public int loseTime = 100,loseCount = 0;
 
 	public int shotMob = -1;
 	public boolean shoting = false;
@@ -86,7 +86,7 @@ public class DrawingMap extends Rectangle {
 		}
 	
 		if(shoting){
-			if(loseFrame>=loseTime&&airID>=0){
+			if(loseCount>=loseTime&&airID>=0){
 					GameScreen.mobs[shotMob].looseHealth(Value.amo[airID]);
 				if(GameScreen.mobs[shotMob].isDead()){
 					Player.getMoney(GameScreen.mobs[shotMob].mobID);
@@ -96,9 +96,9 @@ public class DrawingMap extends Rectangle {
 					GameScreen.hasWon();
 					Resource.shootSound.play();
 				}
-				loseFrame = 0;
+				loseCount = 0;
 			}else{
-				loseFrame++;
+				loseCount++;
 				
 			}
 			
@@ -111,7 +111,7 @@ public class DrawingMap extends Rectangle {
 		Graphics2D g2d = (Graphics2D) g;
 
 		if (airID >= 0) {
-			//g2d.drawRect(towerSquare.x, towerSquare.y, towerSquare.width, towerSquare.height);
+			g2d.drawRect(towerSquare.x, towerSquare.y, towerSquare.width, towerSquare.height);
 			g2d.setComposite(transcluentWhite);
 			g2d.setColor(Color.LIGHT_GRAY);
 			g2d.fillOval(towerSquare.x, towerSquare.y, towerSquare.width, towerSquare.height);
