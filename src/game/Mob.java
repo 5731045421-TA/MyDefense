@@ -15,12 +15,12 @@ public class Mob extends Rectangle{
 	public int health;
 	public int healthSpace = 3,healthHeight = 6;
 	public int mobSize = 40;
-	public static int mobHealth = 0;
+	public static int mobHealth;
 	public int mobWalk = 0;
 	public int healthDivider = 1;
 	public int up = 0,down = 1,right = 2,left = 3;
 	public int direction = right;
-	public int mobID = Value.mobAir;
+	public int mobID;
 	public boolean inGame = false;
 	public boolean isDead = false;
 	public boolean isUpward = false;
@@ -54,8 +54,8 @@ public class Mob extends Rectangle{
 			this.type = 3;
 		}
 		if(i >= 29){
-			this.health+=80;
-			this.healthDivider+=2;
+			this.health+=200;
+			this.healthDivider+=5;
 			this.type = 4;
 		}
 		this.mobID = mobID;
@@ -144,8 +144,7 @@ public class Mob extends Rectangle{
 	public void deleteMob() {
 		inGame = false;
 		isDead = true;
-		direction = right;
-		mobWalk = 0;
+		
 		
 	}
 	

@@ -28,7 +28,6 @@ public class GameScreen extends JComponent implements Runnable {
 	public static Map map;
 	public static LoadMap loadmap;
 	public static Store store;
-	public static StartScreen startScreen;
 	
 	public static int myWidth, myHeight;
 	public static int killed = 0,killToWin = 0,level = 1,maxLevel = 3;
@@ -209,7 +208,9 @@ public class GameScreen extends JComponent implements Runnable {
 				}
 			}
 			else{
+				
 				repaint();
+				
 				if(isWin){
 					try {
 						synchronized (thread) {
@@ -240,6 +241,8 @@ public class GameScreen extends JComponent implements Runnable {
 		}
 
 	}
+
+
 
 	public synchronized void nextMission() {
 		synchronized (thread) {

@@ -10,10 +10,6 @@ public class Map {
 	public DrawingMap[][] block;
 
 	public Map() {
-		define();
-	}
-
-	public void define() {
 		block = new DrawingMap[worldHeight][worldWidth];
 
 		for (int y = 0; y < block.length; y++) {
@@ -22,7 +18,6 @@ public class Map {
 						y * blockSize, blockSize, blockSize, Value.groundGrass, Value.airAir);
 			}
 		}
-
 	}
 
 	public void draw(Graphics g) {

@@ -1,12 +1,11 @@
 package game;
 
 public class Player {
-	public static int coinage = 2000,health = 10;
-	public static int killed = 0,killToWin = 0,level = 10,maxLevel = 10;
-	
-	public Player() {
 
-	}
+	public static int coinage = 3000,health = 10;
+	public static int killed = 0,killToWin = 0,level = 1,maxLevel = 10;
+
+	
 	
 	//player health
 	public static void loseHealth() {
