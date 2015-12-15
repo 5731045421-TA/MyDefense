@@ -65,6 +65,7 @@ public class GameScreen extends JComponent implements Runnable {
 		
 		for(int i =0;i<mobs.length;i++){
 			mobs[i] = new Mob();
+			System.out.println(i);
 		}
 		
 		Resource.startScreenSound.stop();
@@ -110,22 +111,24 @@ public class GameScreen extends JComponent implements Runnable {
 			g2.drawString("Press spacebar to retry", myWidth/2-300, myHeight/2+45);
 			
 			if(retry){
+				
+				define();
 				Player.killed = 0;
 				Player.coinage = 200;
 				Player.health = 10;
-				define();
+				Player.level = 1;
 				retry = false;
 			}
 			
-			if (gameoverSoundTrigger) {
-				gameoverSoundTrigger=false;
-				Resource.soundTrack.stop();
-				Resource.shootSound.stop();
-				Resource.gameoverSound.play();
-				//System.out.println("play gameover sound");				
-			}
+//			if (gameoverSoundTrigger) {
+//				gameoverSoundTrigger=false;
+//				Resource.soundTrack.stop();
+//				Resource.shootSound.stop();
+//				Resource.gameoverSound.play();
+//								
+//			}
 		}
-		//System.out.println(gameoverSoundTrigger);
+		
 		
 		if(isWin){			
 			Resource.soundTrack.stop();
@@ -174,14 +177,6 @@ public class GameScreen extends JComponent implements Runnable {
 		}
 	}
 	
-	public  static void hasWon(){
-		if(Player.killed == Player.killToWin){
-			isWin = true;
-			Player.killed = 0;
-			Player.coinage = 200;
-			Player.health = 10; 
-		}
-	}
 	
 	@Override
 	public void run() {
@@ -190,6 +185,7 @@ public class GameScreen extends JComponent implements Runnable {
 			if (!isFirst && Player.health > 0 &&!isWin) {
 				map.logic();
 				mobSpawner();
+				
 				for(int i = 0;i<mobs.length;i++){
 					if(mobs[i].inGame){
 						mobs[i].move();

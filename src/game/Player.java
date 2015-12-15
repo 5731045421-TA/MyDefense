@@ -19,9 +19,19 @@ public class Player {
 	
 	public static void countKill(){
 		killed++;
+		hasWon();
 	}
 	
 	public static void getMoney(int mobID){
 		coinage += Value.deathReward[mobID] ;
+	}
+	
+	public  static void hasWon(){
+		if(Player.killed == Player.killToWin){
+			GameScreen.isWin = true;
+			killed = 0;
+			coinage = 200;
+			health = 10; 
+		}
 	}
 }

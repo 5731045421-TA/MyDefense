@@ -90,7 +90,6 @@ public class Block extends Rectangle {
 					shoting = false;
 					shotMob = -1;
 					Player.countKill();
-					GameScreen.hasWon();
 					Resource.shootSound.play();
 				}
 				loseCount = 0;

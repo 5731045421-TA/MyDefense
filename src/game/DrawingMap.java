@@ -93,7 +93,7 @@ public class DrawingMap extends Rectangle {
 					shoting = false;
 					shotMob = -1;
 					Player.countKill();
-					GameScreen.hasWon();
+					//Player.hasWon();
 					Resource.shootSound.play();
 				}
 				loseCount = 0;
