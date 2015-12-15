@@ -3,13 +3,13 @@ import java.awt.Graphics;
 
 import render.GameScreen;
 
-public class Room {
+public class Map {
 	public int worldWidth = 15;
 	public int worldHeight = 10;
 	public int blockSize = 40;
 	public Block[][] block;
 
-	public Room() {
+	public Map() {
 		define();
 	}
 

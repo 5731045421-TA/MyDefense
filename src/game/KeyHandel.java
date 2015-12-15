@@ -40,9 +40,9 @@ public class KeyHandel implements MouseMotionListener, MouseListener,KeyListener
 		try {
 			GameScreen.store.click(e.getButton());
 		} catch (SellTowerException e1) {
-			for (int y = 0; y < GameScreen.room.block.length; y++) {
-				for (int x = 0; x < GameScreen.room.block[0].length; x++) {
-					GameScreen.room.block[y][x].shoting = false;
+			for (int y = 0; y < GameScreen.map.block.length; y++) {
+				for (int x = 0; x < GameScreen.map.block[0].length; x++) {
+					GameScreen.map.block[y][x].shoting = false;
 				}
 			}
 		}

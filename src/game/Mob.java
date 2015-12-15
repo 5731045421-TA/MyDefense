@@ -34,9 +34,9 @@ public class Mob extends Rectangle{
 	}
 	int i = 0;
 	public void spawnMob(int mobID,int i){
-		for(int y = 0;y<GameScreen.room.block.length;y++){
-			if(GameScreen.room.block[y][0].groundID == Value.groundRoad){
-				setBounds(GameScreen.room.block[y][0].x, GameScreen.room.block[y][0].y, mobSize, mobSize);
+		for(int y = 0;y<GameScreen.map.block.length;y++){
+			if(GameScreen.map.block[y][0].groundID == Value.groundRoad){
+				setBounds(GameScreen.map.block[y][0].x, GameScreen.map.block[y][0].y, mobSize, mobSize);
 				xC = 0;
 				yC = y;
 			}
@@ -75,7 +75,7 @@ public class Mob extends Rectangle{
 			
 			mobWalk++;
 			
-			if(mobWalk == GameScreen.room.blockSize){
+			if(mobWalk == GameScreen.map.blockSize){
 				if(direction == right){
 					xC++;
 					isRightward = true;
@@ -91,34 +91,34 @@ public class Mob extends Rectangle{
 				}
 				if(!isUpward){
 					try {
-						if(GameScreen.room.block[yC+1][xC].groundID == Value.groundRoad){
+						if(GameScreen.map.block[yC+1][xC].groundID == Value.groundRoad){
 							direction = down;
 						}
 					} catch (Exception e) {}
 				}
 				if(!isDownward){
 					try {
-						if(GameScreen.room.block[yC-1][xC].groundID == Value.groundRoad){
+						if(GameScreen.map.block[yC-1][xC].groundID == Value.groundRoad){
 							direction = up;
 						}
 					} catch (Exception e) {}
 				}
 				if(!isLeftward){
 					try {
-						if(GameScreen.room.block[yC][xC+1].groundID == Value.groundRoad){
+						if(GameScreen.map.block[yC][xC+1].groundID == Value.groundRoad){
 							direction = right;
 						}
 					} catch (Exception e) {}
 				}
 				if(!isRightward){
 					try {
-						if(GameScreen.room.block[yC][xC-1].groundID == Value.groundRoad){
+						if(GameScreen.map.block[yC][xC-1].groundID == Value.groundRoad){
 							direction = left;
 						}
 					} catch (Exception e) {}
 				}
 				
-				if(GameScreen.room.block[yC][xC].airID == Value.airBase){
+				if(GameScreen.map.block[yC][xC].airID == Value.airBase){
 					deleteMob();
 					loseHealth();
 				}

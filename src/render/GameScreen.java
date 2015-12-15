@@ -6,9 +6,10 @@ import javax.swing.*;
 import exception.LoadMissionException;
 import game.KeyHandel;
 import game.LoadMap;
+import game.Map;
 import game.Mob;
 import game.Resource;
-import game.Room;
+
 
 public class GameScreen extends JComponent implements Runnable {
 	/**
@@ -26,7 +27,7 @@ public class GameScreen extends JComponent implements Runnable {
 
 	public static Point mse = new Point(0, 0);
 
-	public static Room room;
+	public static Map map;
 	public static LoadMap loadmap;
 	public static Store store;
 	public static StartScreen startScreen;
@@ -54,7 +55,7 @@ public class GameScreen extends JComponent implements Runnable {
 
 
 	public void define() {
-		room = new Room();
+		map = new Map();
 		loadmap = new LoadMap();
 		store = new Store();
 		try {
@@ -84,10 +85,10 @@ public class GameScreen extends JComponent implements Runnable {
 		g2.setBackground(Color.DARK_GRAY);
 		g2.clearRect(0, 0, getWidth(), getHeight());
 		g2.setColor(Color.BLACK);
-		g2.drawLine(room.block[0][0].x - 1, 0, room.block[0][0].x - 1,
-				room.block[room.worldHeight - 1][0].y + room.blockSize - 1);
+		g2.drawLine(map.block[0][0].x - 1, 0, map.block[0][0].x - 1,
+				map.block[map.worldHeight - 1][0].y + map.blockSize - 1);
 		
-		room.draw(g);// Draw room
+		map.draw(g);// Draw map
 		
 		for(int i = 0;i<mobs.length;i++){
 			if(mobs[i].inGame){
@@ -97,12 +98,14 @@ public class GameScreen extends JComponent implements Runnable {
 		
 		store.draw(g);// Draw the store
 		if(!isWin && health < 1){
+			Resource.shootSound.stop();
 			g2.setColor(new Color(240, 20, 20));
 			g2.setFont(new Font("Courier New", Font.BOLD, 40));
 			g2.drawString("GAME OVER!", myWidth/2-90, myHeight/2);
-			g2.drawString("Press Enter", myWidth/2-110, myHeight/2+45);
-			Resource.soundTrack.stop();
+			g2.drawString("Press Enter", myWidth/2-110, myHeight/2+45);			
 			if (gameoverSoundTrigger) {
+				Resource.soundTrack.stop();
+				Resource.shootSound.stop();
 				Resource.gameoverSound.play();
 				System.out.println("paly gameover song");
 				gameoverSoundTrigger=false;
@@ -112,7 +115,7 @@ public class GameScreen extends JComponent implements Runnable {
 		}
 		
 		if(isWin){
-			Resource.shootSound[0].stop();
+			
 			Resource.soundTrack.stop();
 			g2.clearRect(0, 0, getWidth(), getHeight());
 			g2.setFont(new Font("Courier New", Font.BOLD, 35));
@@ -176,7 +179,7 @@ public class GameScreen extends JComponent implements Runnable {
 		while (true) {
 			
 			if (!isFirst && health > 0 &&!isWin) {
-				room.logic();
+				map.logic();
 				mobSpawner();
 				for(int i = 0;i<mobs.length;i++){
 					if(mobs[i].inGame){

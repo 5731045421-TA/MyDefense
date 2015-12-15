@@ -71,7 +71,7 @@ public class Block extends Rectangle {
 						if (towerSquare.intersects(GameScreen.mobs[i])) {
 							shoting = true;
 							shotMob = i;
-							Resource.shootSound[0].play();
+							Resource.shootSound.play();
 						}
 					}
 				}
@@ -88,12 +88,14 @@ public class Block extends Rectangle {
 					GameScreen.countKill();
 					System.out.println(GameScreen.killed);
 					GameScreen.hasWon();
+					Resource.shootSound.play();
 				}
 				loseFrame = 0;
 			}else{
 				loseFrame++;
+				
 			}
-			Resource.shootSound[0].play();
+			
 			
 		}
 	}
