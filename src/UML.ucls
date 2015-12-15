@@ -1,108 +1,201 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.1.9" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
-  <class id="1" language="java" name="game.Value" project="MyDefense_Progmeth" 
-    file="/MyDefense_Progmeth/src/game/Value.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="520" width="131" x="94" y="188"/>    
+  <class id="1" language="java" name="game.DrawingMap" project="MyDefense" file="/MyDefense/src/game/DrawingMap.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="262" y="255"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="game.Store" project="MyDefense_Progmeth" 
-    file="/MyDefense_Progmeth/src/game/Store.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="430" width="227" x="271" y="206"/>    
+  <class id="2" language="java" name="game.KeyHandel" project="MyDefense" file="/MyDefense/src/game/KeyHandel.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="576" y="199"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="render.StartScreen" project="MyDefense_Progmeth" 
-    file="/MyDefense_Progmeth/src/render/StartScreen.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1059" y="423"/>    
+  <class id="3" language="java" name="game.LoadMap" project="MyDefense" file="/MyDefense/src/game/LoadMap.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="829" y="134"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="game.Room" project="MyDefense_Progmeth" 
-    file="/MyDefense_Progmeth/src/game/Room.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1033" y="639"/>    
+  <class id="4" language="java" name="game.Map" project="MyDefense" file="/MyDefense/src/game/Map.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="94" y="579"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="game.Resource" project="MyDefense_Progmeth" 
-    file="/MyDefense_Progmeth/src/game/Resource.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1394" y="97"/>    
+  <class id="5" language="java" name="game.Mob" project="MyDefense" file="/MyDefense/src/game/Mob.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="927" y="732"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="game.Mob" project="MyDefense_Progmeth" 
-    file="/MyDefense_Progmeth/src/game/Mob.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1040" y="-96"/>    
+  <class id="6" language="java" name="game.Player" project="MyDefense" file="/MyDefense/src/game/Player.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1187" y="855"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="game.LoadMap" project="MyDefense_Progmeth" 
-    file="/MyDefense_Progmeth/src/game/LoadMap.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="474" y="72"/>    
+  <class id="7" language="java" name="game.Resource" project="MyDefense" file="/MyDefense/src/game/Resource.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1646" y="723"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="game.KeyHandel" project="MyDefense_Progmeth" 
-    file="/MyDefense_Progmeth/src/game/KeyHandel.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="738" y="-89"/>    
+  <class id="8" language="java" name="game.Value" project="MyDefense" file="/MyDefense/src/game/Value.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1394" y="738"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="game.Frame" project="MyDefense_Progmeth" 
-    file="/MyDefense_Progmeth/src/game/Frame.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="221" y="60"/>    
+  <class id="9" language="java" name="exception.LoadMissionException" project="MyDefense" 
+    file="/MyDefense/src/exception/LoadMissionException.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1512" y="150"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="game.Block" project="MyDefense_Progmeth" 
-    file="/MyDefense_Progmeth/src/game/Block.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="376" width="280" x="1300" y="389"/>    
+  <class id="10" language="java" name="exception.SellTowerException" project="MyDefense" 
+    file="/MyDefense/src/exception/SellTowerException.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1475" y="347"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="Main.Main" project="MyDefense" file="/MyDefense/src/Main/Main.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="178" width="144" x="1136" y="122"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="11">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="12" name="block">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="13" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
+  <class id="12" language="java" name="render.GameScreen" project="MyDefense" 
+    file="/MyDefense/src/render/GameScreen.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="618" y="676"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="render.StartScreen" project="MyDefense" 
+    file="/MyDefense/src/render/StartScreen.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1191" y="517"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="render.Store" project="MyDefense" file="/MyDefense/src/render/Store.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="309" y="894"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="15" language="java" name="java.lang.Runnable" project="2110215_Exercise1_DailyPlanner" 
+    file="C:/Program Files/Java/jre1.8.0_65/lib/rt.jar" binary="true" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="616" y="1081"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <association id="16">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="17" name="store"/>      
+      <multiplicity id="18" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
+    <end type="TARGET" refId="14" navigable="true"/>    
     <display labels="false" multiplicity="false"/>  
   </association>  
+  <association id="19">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="20" name="loadmap"/>      
+      <multiplicity id="21" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="22">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="23" name="mobs"/>      
+      <multiplicity id="24" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="25">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="26" name="map"/>      
+      <multiplicity id="27" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="28">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="29" name="screen"/>      
+      <multiplicity id="30" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="31">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="32" name="block"/>      
+      <multiplicity id="33" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="34">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="35" name="start"/>      
+      <multiplicity id="36" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <realization id="37">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="15"/>  
+  </realization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    

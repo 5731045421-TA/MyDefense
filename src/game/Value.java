@@ -28,6 +28,7 @@ public class Value {
 	public static int mobAir = -1;
 	public static int mobMob = 0;
 	
-	public static int[] deathReward = {5,10,15,20};
+	public static int[] deathReward = {5,10,20,40};
+	public static int[] amo = {1,2,2,3,3,4,5,2,4,4,6,6,8,10};
 	
 }

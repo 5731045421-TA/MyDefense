@@ -22,7 +22,7 @@ public class Store {
 	public static int heldID = -1;
 	public static int[] buttonID = { 0, 1, 2, 3, 4, 5, 6, -2, -4, -5 };
 	public static int[] buttonPrice = { 20, 30, 30, 50, 50, 100, 200, 0, 0, 0 };
-	public static int[] upgradePrice = { 40, 60, 60, 100, 100, 200, 400 };
+	public static int[] upgradePrice = { 20, 30, 30, 50, 50, 100, 200 };
 
 	public Rectangle[] button = new Rectangle[shopWidth];
 	public Rectangle buttonHealth;

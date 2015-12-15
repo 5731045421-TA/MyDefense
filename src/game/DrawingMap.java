@@ -87,7 +87,7 @@ public class DrawingMap extends Rectangle {
 	
 		if(shoting){
 			if(loseFrame>=loseTime&&airID>=0){
-					GameScreen.mobs[shotMob].looseHealth(Tower.amo[airID]);
+					GameScreen.mobs[shotMob].looseHealth(Value.amo[airID]);
 				if(GameScreen.mobs[shotMob].isDead()){
 					Player.getMoney(GameScreen.mobs[shotMob].mobID);
 					shoting = false;
