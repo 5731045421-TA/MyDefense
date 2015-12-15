@@ -33,7 +33,6 @@ public class GameScreen extends JComponent implements Runnable {
 	public static Store store;
 	
 	public static int myWidth, myHeight;
-	public static int killed = 0,killToWin = 0,level = 1,maxLevel = 3;
 	public static int mobType = 0;
 	
 	public int spawnTime = 1200,spawnFrame = 0;

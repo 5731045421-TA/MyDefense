@@ -20,7 +20,6 @@ public class StartScreen extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	public static BufferedImage startBG = null;
-	public static boolean isFirst = true;
 	public static JButton newGame = new JButton("New Game");
 
 	
@@ -59,23 +58,11 @@ public class StartScreen extends JPanel {
 		
 		
 	}
-	int counter = 0;
 	@Override
 	protected void paintComponent(Graphics g) {
 		Graphics2D g2 = (Graphics2D)g;
 		g2.drawImage(startBG, null, 0, 0);
 		
-		playStartSong();
-	}
-
-	
-	
-	public void playStartSong(){
 		Resource.startScreenSound.loop();
-
-		
-	}
-	
-	
-	
+	}	
 }

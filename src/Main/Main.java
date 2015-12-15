@@ -5,7 +5,6 @@ import java.awt.GridLayout;
 
 import javax.swing.JFrame;
 
-import render.GameScreen;
 import render.StartScreen;
 
 public class Main {

@@ -1,7 +1,7 @@
 package game;
 
 public class Player {
-	public static int coinage = 300,health = 10;
+	public static int coinage = 100,health = 10;
 	public static int killed = 0,killToWin = 0,level = 1,maxLevel = 10;
 
 

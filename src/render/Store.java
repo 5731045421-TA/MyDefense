@@ -185,7 +185,11 @@ public class Store {
 		if (holdsItem) {
 			// draw sample turret
 			if (heldID >= 0) {
-
+				g2d.setComposite(transcluentWhite);
+				g2d.setColor(Color.WHITE);
+				g2d.fillOval(GameScreen.mse.x - Value.towerRange[heldID]/2 -20, GameScreen.mse.y - Value.towerRange[heldID]/2 -20, Value.towerRange[heldID]+40 ,
+						Value.towerRange[heldID]+40 );
+				g2d.setComposite(opaque);
 				g2d.drawImage(Resource.turret[heldID], null, GameScreen.mse.x - 20, GameScreen.mse.y - 20);
 
 			} else if (heldID == Value.airSell) {
