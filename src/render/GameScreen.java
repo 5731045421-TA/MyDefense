@@ -54,6 +54,7 @@ public class GameScreen extends JComponent implements Runnable {
 
 	public void define() {
 		GameScreen.gameoverSoundTrigger=false;
+		mobs = new Mob[30];
 		map = new Map();
 		loadmap = new LoadMap();
 		store = new Store();
