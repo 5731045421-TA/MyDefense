@@ -66,6 +66,9 @@ public class KeyHandel implements MouseMotionListener, MouseListener,KeyListener
 	
 	@Override
 	public void keyPressed(KeyEvent e) {
+		if(e.getKeyCode() == 32){
+			GameScreen.retry = true;
+		}
 		
 		if(e.getKeyCode() == 10){//enter
 			if(!GameScreen.isWin){
@@ -82,6 +85,7 @@ public class KeyHandel implements MouseMotionListener, MouseListener,KeyListener
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 		GameScreen.pressEnter = false;
+
 	}
 
 	@Override
