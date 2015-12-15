@@ -197,7 +197,7 @@ public class Mob extends Rectangle{
 			}else {
 				counter++;
 			}
-			//System.out.println("set transform");
+
 			if(type == 1){				
 				g2d.drawImage(Resource.animationCreep1[mobID][ani], aop, x,y);
 			}else if(type == 2){
@@ -208,7 +208,7 @@ public class Mob extends Rectangle{
 				g2d.drawImage(Resource.boss, null, x,y);
 			}
 			at.setToIdentity();
-			//System.out.println(GameScreen.mobs[0].direction);
+
 			
 			//health bar.
 			g2d.setColor(Color.RED);

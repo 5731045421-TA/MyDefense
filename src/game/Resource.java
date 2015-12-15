@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
 
 public class Resource {
 	
@@ -98,7 +99,9 @@ public class Resource {
 		}catch(Exception e){
 			soundTrack=null;
 			coinSound=null;
-			System.out.println("sound not found");
+			JOptionPane option = new JOptionPane();
+			option.showMessageDialog(null,"Sound not found","Error",JOptionPane.ERROR_MESSAGE );
+			System.exit(0);
 			e.printStackTrace();
 		}
 	}

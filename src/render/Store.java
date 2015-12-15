@@ -10,6 +10,7 @@ import java.awt.Rectangle;
 import exception.SellTowerException;
 import game.Player;
 import game.Resource;
+import game.Tower;
 import game.Value;
 
 public class Store {
@@ -21,7 +22,6 @@ public class Store {
 	public static int heldID = -1;
 	public static int[] buttonID = { 0, 1, 2, 3, 4, 5, 6, -2, -4, -5 };
 	public static int[] buttonPrice = { 20, 30, 30, 50, 50, 100, 200, 0, 0, 0 };
-	public static int[] radius = { 40, 40, 50, 80, 100, 100, 200, 0, 0, 0 };
 	public static int[] upgradePrice = { 40, 60, 60, 100, 100, 200, 400 };
 
 	public Rectangle[] button = new Rectangle[shopWidth];
@@ -64,7 +64,7 @@ public class Store {
 						heldID = Value.airAir;
 						holdsItem = false;
 					} else if (heldID == Value.airSell || heldID == Value.airUpGrade) {
-						System.out.println("sell");
+					
 					}
 				}
 			}
@@ -175,11 +175,6 @@ public class Store {
 		if (holdsItem) {
 			// draw sample turret
 			if (heldID >= 0) {
-//				g2d.setComposite(transcluentWhite);
-//				g2d.setColor(Color.WHITE);
-//				g2d.fillOval(GameScreen.mse.x - radius[heldID], GameScreen.mse.y - radius[heldID], radius[heldID] * 2,
-//						radius[heldID] * 2);
-//				g2d.setComposite(opaque);
 
 				g2d.drawImage(Resource.turret[heldID], null, GameScreen.mse.x - 20, GameScreen.mse.y - 20);
 
