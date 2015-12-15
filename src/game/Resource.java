@@ -91,9 +91,7 @@ public class Resource {
 			congratSound=Applet.newAudioClip(loader.getResource("soundRes/congratSound.wav"));
 			gameoverSound=Applet.newAudioClip(loader.getResource("soundRes/gameoverSound.wav"));
 			startScreenSound=Applet.newAudioClip(loader.getResource("soundRes/startScreenSound.wav"));
-//			for(int i=1;i<=shootSound.length;i++){
-//				shootSound[i-1]=Applet.newAudioClip(loader.getResource("soundRes/shootSound"+i+".wav"));
-//			}
+
 			shootSound=Applet.newAudioClip(loader.getResource("soundRes/shortShootSound.wav"));
 			
 		}catch(Exception e){

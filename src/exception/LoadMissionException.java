@@ -1,7 +1,6 @@
 package exception;
 
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 public class LoadMissionException extends Exception {

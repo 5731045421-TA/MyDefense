@@ -2,12 +2,15 @@ package render;
 import java.awt.*;
 import javax.swing.*;
 import exception.LoadMissionException;
-import game.KeyHandel;
 import game.LoadMap;
 import game.Map;
 import game.Mob;
 import game.Player;
 import game.Resource;
+
+import input.KeyHandel;
+
+
 
 public class GameScreen extends JComponent implements Runnable {
 	/**
@@ -30,7 +33,6 @@ public class GameScreen extends JComponent implements Runnable {
 	public static Store store;
 	
 	public static int myWidth, myHeight;
-	public static int killed = 0,killToWin = 0,level = 1,maxLevel = 3;
 	public static int mobType = 0;
 	
 	public int spawnTime = 1200,spawnFrame = 0;
@@ -51,6 +53,7 @@ public class GameScreen extends JComponent implements Runnable {
 
 
 	public void define() {
+		mobs = new Mob[30];
 		map = new Map();
 		loadmap = new LoadMap();
 		store = new Store();
