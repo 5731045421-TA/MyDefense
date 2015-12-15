@@ -7,7 +7,6 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
-import exception.SellTowerException;
 import game.Player;
 import game.Resource;
 import game.Value;
@@ -54,7 +53,7 @@ public class Store {
 				button[0].y + (button[0].height * 2) + -(iconSize * 2) + cellSpace, iconSize, iconSize);
 	}
 
-	public void click(int mouseButton) throws SellTowerException {
+	public void click(int mouseButton) {
 		if (mouseButton == 1) { // left mouse button
 			for (int i = 0; i < button.length; i++) {
 				if (button[i].contains(GameScreen.mse)) {
@@ -90,7 +89,7 @@ public class Store {
 					Resource.coinSound.play();// coinSonund
 				}
 			}
-			try { // sell tower
+		    // sell tower
 				if (holdsItem && heldID == Value.airSell) {
 					for (int y = 0; y < GameScreen.map.block.length; y++) {
 						for (int x = 0; x < GameScreen.map.block[0].length; x++) {
@@ -107,10 +106,6 @@ public class Store {
 					}
 					Resource.coinSound.play();
 				}
-
-			} catch (Exception e) {
-				throw new SellTowerException(e);
-			}
 
 		}//upgrade tower
 		if (holdsItem && heldID == Value.airUpGrade) {

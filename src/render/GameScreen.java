@@ -3,12 +3,12 @@ import java.awt.*;
 import javax.swing.*;
 
 import exception.LoadMissionException;
-import game.KeyHandel;
 import game.LoadMap;
 import game.Map;
 import game.Mob;
 import game.Player;
 import game.Resource;
+import input.KeyHandel;
 
 
 public class GameScreen extends JComponent implements Runnable {

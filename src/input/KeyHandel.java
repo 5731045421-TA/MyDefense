@@ -1,4 +1,4 @@
-package game;
+package input;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -7,8 +7,6 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 import javax.swing.JComponent;
-
-import exception.SellTowerException;
 import render.GameScreen;
 
 
@@ -37,15 +35,9 @@ public class KeyHandel implements MouseMotionListener, MouseListener,KeyListener
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		try {
+		
 			GameScreen.store.click(e.getButton());
-		} catch (SellTowerException e1) {
-			for (int y = 0; y < GameScreen.map.block.length; y++) {
-				for (int x = 0; x < GameScreen.map.block[0].length; x++) {
-					GameScreen.map.block[y][x].shoting = false;
-				}
-			}
-		}
+		
 	}
 
 	@Override

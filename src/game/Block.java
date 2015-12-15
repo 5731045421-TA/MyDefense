@@ -1,12 +1,9 @@
 package game;
 import java.awt.*;
-import java.awt.geom.AffineTransform;
-import java.awt.image.AffineTransformOp;
-
 import render.GameScreen;
 
 
-public class DrawingMap extends Rectangle {
+public class Block extends Rectangle {
 	/**
 	 * 
 	 */
@@ -25,7 +22,7 @@ public class DrawingMap extends Rectangle {
 	public final AlphaComposite transcluentWhite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.4f);
 	public final AlphaComposite opaque = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1);
 	
-	public DrawingMap(int x, int y, int width, int height, int groundId, int airID) {
+	public Block(int x, int y, int width, int height, int groundId, int airID) {
 		setBounds(x, y, width, height);
 		towerSquare = new Rectangle(x - (towerSquareSize / 2), y - (towerSquareSize / 2), width + towerSquareSize,
 					height + towerSquareSize);
@@ -111,7 +108,7 @@ public class DrawingMap extends Rectangle {
 		Graphics2D g2d = (Graphics2D) g;
 
 		if (airID >= 0) {
-			g2d.drawRect(towerSquare.x, towerSquare.y, towerSquare.width, towerSquare.height);
+			//g2d.drawRect(towerSquare.x, towerSquare.y, towerSquare.width, towerSquare.height);
 			g2d.setComposite(transcluentWhite);
 			g2d.setColor(Color.LIGHT_GRAY);
 			g2d.fillOval(towerSquare.x, towerSquare.y, towerSquare.width, towerSquare.height);
