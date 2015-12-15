@@ -132,8 +132,7 @@ public class GameScreen extends JComponent implements Runnable {
 			}
 		}
 		
-		if(isWin){
-			
+		if(isWin){			
 			Resource.soundTrack.stop();
 			Resource.shootSound.stop();
 			g2.clearRect(0, 0, getWidth(), getHeight());
