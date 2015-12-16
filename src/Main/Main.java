@@ -19,7 +19,7 @@ public class Main {
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setLayout(new GridLayout(1, 1, 0, 0));
+		//frame.setLayout(new GridLayout(1, 1, 0, 0));
 		
 		start = new StartScreen(frame);
 		frame.add(start);

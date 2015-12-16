@@ -37,7 +37,7 @@ public class GameScreen extends JComponent implements Runnable {
 	
 	public int spawnTime = 1200,spawnFrame = 0;
 	
-	public static Mob[] mobs = new Mob[30];
+	public static Mob[] mobs;
 
 	
 	
@@ -53,7 +53,7 @@ public class GameScreen extends JComponent implements Runnable {
 
 
 	public void define() {
-		mobs = new Mob[30];
+		//mobs = new Mob[Player.killToWin];
 		map = new Map();
 		loadmap = new LoadMap();
 		store = new Store();
@@ -62,16 +62,15 @@ public class GameScreen extends JComponent implements Runnable {
 		} catch (LoadMissionException e) {
 			
 		}
-		
+		mobs = new Mob[Player.killToWin];
 		for(int i =0;i<mobs.length;i++){
 			mobs[i] = new Mob();
-			System.out.println(i);
+			
 		}
 		
 		Resource.startScreenSound.stop();
 		Resource.congratSound.stop();
 		Resource.gameoverSound.stop();
-		//System.out.println("stop gameoverSound");
 		Resource.soundTrack.loop();//soundTrack
 	}
 	
@@ -120,13 +119,7 @@ public class GameScreen extends JComponent implements Runnable {
 				retry = false;
 			}
 			
-//			if (gameoverSoundTrigger) {
-//				gameoverSoundTrigger=false;
-//				Resource.soundTrack.stop();
-//				Resource.shootSound.stop();
-//				Resource.gameoverSound.play();
-//								
-//			}
+
 		}
 		
 		
@@ -162,7 +155,7 @@ public class GameScreen extends JComponent implements Runnable {
 	}
 	
 	
-	//bug
+	
 	public void mobSpawner(){
 		if(spawnFrame >= spawnTime){
 			for(int i =0;i<mobs.length;i++){
